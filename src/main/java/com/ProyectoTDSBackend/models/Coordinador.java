@@ -14,13 +14,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
+import com.ProyectoTDSBackend.security.models.Persona;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table( name = "coordinador")
-public class Coordinador implements Serializable{
-	
+@Table(name = "coordinador")
+public class Coordinador implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -31,20 +33,15 @@ public class Coordinador implements Serializable{
 	private Long idcoordinador;
 	@Column(name = "estado", nullable = false)
 	private String estado;
-	
-	
-//	@JsonIgnore
-//	  @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-//	  @JoinColumn(name = "idpersona")
-//		@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//	  private Persona persona;
-//	
+
 	@JsonIgnore
-	  @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-	  @JoinColumn(name = "idcarrera")
-		@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	  private Carrera carrera;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "idpersona")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private Persona persona;
 
-	
-
+	@JsonIgnore
+	@OneToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idcarrera")
+	private Carrera carrera;
 }
