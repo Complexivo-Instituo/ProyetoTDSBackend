@@ -6,7 +6,7 @@
 package com.ProyectoTDSBackend.security.jwt;
 
 import com.ProyectoTDSBackend.security.dto.JwtDto;
-import com.ProyectoTDSBackend.security.models.UsuarioPrincipal;
+import com.ProyectoTDSBackend.security.models.PersonaPrincipal;
 import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
@@ -43,7 +43,7 @@ public class JwtProvider {
     private int expiration;
 
     public String generateToken(Authentication authentication) {
-        UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
+        PersonaPrincipal usuarioPrincipal = (PersonaPrincipal) authentication.getPrincipal();
         List<String> roles = usuarioPrincipal.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
         return Jwts.builder()
                 .setSubject(usuarioPrincipal.getUsername())
