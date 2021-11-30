@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.dto;
 
+import com.sun.istack.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.Email;
@@ -17,21 +18,65 @@ import javax.validation.constraints.NotBlank;
 public class NuevoUsuario {
 
     @NotBlank
-    private String nombre;
+    private String identificacion;
+    @NotBlank
+    private String primernombre;
+    @NotBlank
+    private String segundonombre;
+    @NotBlank
+    private String primerapellido;
+    @NotBlank
+    private String segundoapellido;
     @NotBlank
     private String nombreUsuario;
-    @Email
+    @NotBlank
     private String email;
+
+    @NotBlank
+    private int estado;
+
     @NotBlank
     private String password;
     private Set<String> roles = new HashSet<>();
 
-    public String getNombre() {
-        return nombre;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getPrimernombre() {
+        return primernombre;
+    }
+
+    public void setPrimernombre(String primernombre) {
+        this.primernombre = primernombre;
+    }
+
+    public String getSegundonombre() {
+        return segundonombre;
+    }
+
+    public void setSegundonombre(String segundonombre) {
+        this.segundonombre = segundonombre;
+    }
+
+    public String getPrimerapellido() {
+        return primerapellido;
+    }
+
+    public void setPrimerapellido(String primerapellido) {
+        this.primerapellido = primerapellido;
+    }
+
+    public String getSegundoapellido() {
+        return segundoapellido;
+    }
+
+    public void setSegundoapellido(String segundoapellido) {
+        this.segundoapellido = segundoapellido;
     }
 
     public String getNombreUsuario() {
@@ -65,4 +110,14 @@ public class NuevoUsuario {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+    
 }
