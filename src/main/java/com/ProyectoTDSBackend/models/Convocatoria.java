@@ -35,13 +35,13 @@ public class Convocatoria {
     @Column(name = "fecha_fin", nullable = false)
     private Date fecha_fin;
 
-    @Column(name = "estado", nullable = false)
-    private Long estado;
+    @Column(name = "estado" )
+    private int estado;
 
     public Convocatoria() {
     }
 
-    public Convocatoria(Long idconvocatoria, String descripcion_convocatoria, Date fecha_inicio, Date fecha_fin, Long estado) {
+    public Convocatoria(Long idconvocatoria, String descripcion_convocatoria, Date fecha_inicio, Date fecha_fin, Integer estado) {
         this.idconvocatoria = idconvocatoria;
         this.descripcion_convocatoria = descripcion_convocatoria;
         this.fecha_inicio = fecha_inicio;
@@ -91,13 +91,15 @@ public class Convocatoria {
         this.fecha_fin = fecha_fin;
     }
 
-    public Long getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(Long estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
+
+  
     
     
     
