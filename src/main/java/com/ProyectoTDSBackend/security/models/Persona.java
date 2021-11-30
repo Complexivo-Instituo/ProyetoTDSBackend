@@ -28,7 +28,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpersona")
+    @Column(name = "id_persona")
     private int idpersona;
     
     @NotNull
@@ -55,21 +55,20 @@ public class Persona {
     
     @NotNull
     @Column
-    private String estado;
+    private int estado;
     
     @NotNull
     private String password;
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "persona_rol", joinColumns = @JoinColumn(name = "idpersona"),
+    @JoinTable(name = "persona_rol", joinColumns = @JoinColumn(name = "id_persona"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
     public Persona() {
     }
 
-    public Persona(int idpersona, String identificacion, String primernombre, String segundonombre, String primerapellido, String segundoapellido, String email, String nombreUsuario, String estado, String password) {
-        this.idpersona = idpersona;
+    public Persona(String identificacion, String primernombre, String segundonombre, String primerapellido, String segundoapellido, String email, String nombreUsuario, int estado, String password) {
         this.identificacion = identificacion;
         this.primernombre = primernombre;
         this.segundonombre = segundonombre;
@@ -81,9 +80,10 @@ public class Persona {
         this.password = password;
     }
 
-    public Persona(String nombre, String nombreUsuario, String email, String encode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+    
+
+    
 
     public int getIdpersona() {
         return idpersona;
@@ -149,11 +149,11 @@ public class Persona {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 
