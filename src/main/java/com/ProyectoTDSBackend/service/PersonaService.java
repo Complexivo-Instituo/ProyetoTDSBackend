@@ -7,10 +7,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 
 public interface PersonaService {
 
-	GenericResponse<Object> createPersona(Persona persona);
 
-	GenericResponse<Object> putPersona(int idpersona, String identificacion, String primernombre, String segundonombre,
-			String primerapellido, String SegundoApellido, String email, int contacto);
-
+	Persona getById(int idpersona);
 	List<Persona> getAllPersonas();
 }

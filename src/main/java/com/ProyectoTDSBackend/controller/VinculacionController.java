@@ -39,8 +39,8 @@ public class VinculacionController {
 	 
 	   @CrossOrigin
 	    @GetMapping("/findAll-vinculacion")
-	    public List<Vinculacion> getAllArrendatario() {
-	        return vinculacionService.getAllVinculacion();
+	    public List<Vinculacion> getAllVinculaciones() {
+	        return vinculacionService.getAllVinculaciones();
 	    }
 	   
 	    /**
@@ -53,17 +53,23 @@ public class VinculacionController {
 	    		@RequestParam(value = "idvinculacion") Long idvinculacion,
 	            @RequestParam(value = "identificacion") String identificacion,
 	            @RequestParam(value = "primernombre") String primernombre,
-	            @RequestParam(value = "primerapellido") String primerapellido,
 	            @RequestParam(value = "segundonombre") String segundonombre,
-	            @RequestParam(value = "segundonombre") String segundoapellido,
-	            @RequestParam(value = "contacto") int contacto,
+	            @RequestParam(value = "primerapellido") String primerapellido,
+	            @RequestParam(value = "segundoapellido") String segundoapellido,
 	            @RequestParam(value = "email") String email
 	    ) {
-	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.putVinculacion(idpersona, idvinculacion, identificacion, primernombre, segundonombre, primerapellido, segundoapellido, email, contacto), HttpStatus.OK);
+	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.putVinculacion(idpersona, idvinculacion, identificacion, primernombre, segundonombre, primerapellido, segundoapellido, email), HttpStatus.OK);
 	    }
+	    @CrossOrigin
 	    @GetMapping("/getById-vinculacion")
 	    public Vinculacion getByIdVinculacion(@RequestParam(value = "idvinculacion") Long idvinculacion) {
 	        return vinculacionService.getById(idvinculacion);
+	    }
+	    
+	    @CrossOrigin
+	    @GetMapping("/getByrolvinculacion-vinculacion")
+	    public List<Vinculacion> getByIdRolVinculacion(@RequestParam(value = "rolvinculacion") String rolvinculacion) {
+	        return vinculacionService.getByrolvinculacion(rolvinculacion);
 	    }
 
 }

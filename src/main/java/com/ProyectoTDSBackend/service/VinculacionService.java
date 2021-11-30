@@ -12,15 +12,14 @@ public interface VinculacionService {
 
 	 GenericResponse<Object> createVinculacion(Vinculacion vinculacion);
 
-	    GenericResponse<Object> putVinculacion(int idPersona, Long idvinculacion, String identificacion, String primernombre, String segundonombre,String primerapellido,String SegundoApellido, String email,int contacto);
+	    GenericResponse<Object> putVinculacion(int idPersona, Long idvinculacion, String identificacion, String primernombre, String segundonombre,String primerapellido,String SegundoApellido, String email);
 
-	    List<Vinculacion> getAllVinculacion();
+	    List<Vinculacion> getAllVinculaciones();
 
 	    Vinculacion getById(Long idvinculacion);
+	    
+	    List<Vinculacion> getByrolvinculacion(String rolvinculacion);
 
-	    GenericResponse<Object> eliminarvinculacionById(Long idvinculacion);
+	    //GenericResponse<Object> eliminarvinculacionById(Long idvinculacion);
 
-	    GenericResponse getConsutInfoWithPersona(String identificacion);
-
-	    GenericResponse getConsultPersona(String identificacion);
 }

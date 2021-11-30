@@ -1,6 +1,8 @@
 package com.ProyectoTDSBackend.models;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,15 +19,19 @@ import com.ProyectoTDSBackend.security.models.Persona;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity
 @Table(name = "vinculacion")
 public class Vinculacion implements Serializable{
 
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idvinculacion", nullable = false)
@@ -47,6 +53,7 @@ public class Vinculacion implements Serializable{
 	public void setRolvinculacion(String rolvinculacion) {
 		this.rolvinculacion = rolvinculacion;
 	}
+	
 	public Persona getPersona() {
 		return persona;
 	}
@@ -56,10 +63,7 @@ public class Vinculacion implements Serializable{
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idpersona")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	private Persona persona;
-	
-	
-	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	 private Persona persona;
 
 }
