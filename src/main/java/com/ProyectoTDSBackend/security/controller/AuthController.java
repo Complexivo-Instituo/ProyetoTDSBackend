@@ -12,7 +12,7 @@ import com.ProyectoTDSBackend.security.dto.NuevoUsuario;
 import com.ProyectoTDSBackend.security.enums.RolNombre;
 import com.ProyectoTDSBackend.security.jwt.JwtProvider;
 import com.ProyectoTDSBackend.security.models.Rol;
-import com.ProyectoTDSBackend.security.models.Usuario;
+import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.security.service.RolService;
 import com.ProyectoTDSBackend.security.service.UsuarioService;
 import java.text.ParseException;
@@ -66,8 +66,8 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
             return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        Usuario usuario =
-                new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
+        Persona usuario =
+                new Persona(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
                         passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());

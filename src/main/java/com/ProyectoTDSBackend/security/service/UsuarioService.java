@@ -5,7 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.service;
 
-import com.ProyectoTDSBackend.security.models.Usuario;
+import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public Optional<Usuario> getByNombreUsuario(String nombreUsuario) {
+    public Optional<Persona> getByNombreUsuario(String nombreUsuario) {
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
@@ -35,7 +35,7 @@ public class UsuarioService {
         return usuarioRepository.existsByEmail(email);
     }
 
-    public void save(Usuario usuario) {
+    public void save(Persona usuario) {
         usuarioRepository.save(usuario);
     }
 }

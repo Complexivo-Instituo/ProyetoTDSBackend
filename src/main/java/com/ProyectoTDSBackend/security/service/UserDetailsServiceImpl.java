@@ -5,8 +5,8 @@
  */
 package com.ProyectoTDSBackend.security.service;
 
-import com.ProyectoTDSBackend.security.models.Usuario;
-import com.ProyectoTDSBackend.security.models.UsuarioPrincipal;
+import com.ProyectoTDSBackend.security.models.Persona;
+import com.ProyectoTDSBackend.security.models.PersonaPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
-        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
-        return UsuarioPrincipal.build(usuario);
+        Persona usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        return PersonaPrincipal.build(usuario);
     }
 }
