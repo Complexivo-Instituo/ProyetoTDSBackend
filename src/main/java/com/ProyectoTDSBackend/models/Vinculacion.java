@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.ProyectoTDSBackend.security.models.Persona;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,10 +32,34 @@ public class Vinculacion implements Serializable{
 	private Long idvinculacion;
 	@Column(name = "rolvinculacion", nullable = false)
 	private String rolvinculacion;
-//	@JsonIgnore
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "idpersona")
-//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    private Persona persona;
+
+    
+	
+	public Long getIdvinculacion() {
+		return idvinculacion;
+	}
+	public void setIdvinculacion(Long idvinculacion) {
+		this.idvinculacion = idvinculacion;
+	}
+	public String getRolvinculacion() {
+		return rolvinculacion;
+	}
+	public void setRolvinculacion(String rolvinculacion) {
+		this.rolvinculacion = rolvinculacion;
+	}
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idpersona")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Persona persona;
+	
+	
+	
 
 }

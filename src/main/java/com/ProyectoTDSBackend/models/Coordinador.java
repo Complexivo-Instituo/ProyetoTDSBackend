@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,11 +39,11 @@ public class Coordinador implements Serializable{
 //		@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 //	  private Persona persona;
 //	
-//	@JsonIgnore
-//	  @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-//	  @JoinColumn(name = "idcarrera")
-//		@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//	  private Carrera carrera;
+	@JsonIgnore
+	  @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+	  @JoinColumn(name = "idcarrera")
+		@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	  private Carrera carrera;
 
 	
 
