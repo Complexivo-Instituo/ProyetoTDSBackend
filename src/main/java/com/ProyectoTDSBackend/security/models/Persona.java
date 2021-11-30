@@ -47,6 +47,9 @@ public class Persona {
     private String segundoapellido;
     
     @NotNull
+    private int contacto;
+    
+    @NotNull
     @Email
     private String email;
     @NotNull
@@ -68,23 +71,20 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String identificacion, String primernombre, String segundonombre, String primerapellido, String segundoapellido, String email, String nombreUsuario, int estado, String password) {
+    public Persona(String identificacion, String primernombre, String segundonombre, String primerapellido, String segundoapellido, int contacto, String email, String nombreUsuario, String password) {
         this.identificacion = identificacion;
         this.primernombre = primernombre;
         this.segundonombre = segundonombre;
         this.primerapellido = primerapellido;
         this.segundoapellido = segundoapellido;
+        this.contacto = contacto;
         this.email = email;
         this.nombreUsuario = nombreUsuario;
-        this.estado = estado;
         this.password = password;
     }
 
-
     
-
     
-
     public int getIdpersona() {
         return idpersona;
     }

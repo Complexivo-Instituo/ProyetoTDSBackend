@@ -31,6 +31,8 @@ public class NuevoUsuario {
     private String nombreUsuario;
     @NotBlank
     private String email;
+    @NotNull
+    private int contacto;
 
     @NotBlank
     private int estado;
@@ -119,5 +121,12 @@ public class NuevoUsuario {
         this.estado = estado;
     }
 
-    
+    public int getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(int contacto) {
+        this.contacto = contacto;
+    }
+ 
 }
