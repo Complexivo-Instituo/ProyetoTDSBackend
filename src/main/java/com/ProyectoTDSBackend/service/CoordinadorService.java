@@ -10,7 +10,7 @@ public interface CoordinadorService {
 	GenericResponse<Object> createCoordinador(Coordinador coordinador);
 
 	GenericResponse<Object> putCoordinador(int idPersona, Long idcoordinador, String identificacion,
-			String primernombre, String segundonombre, String primerapellido, String SegundoApellido, String email);
+			String primernombre, String segundonombre, String primerapellido, String SegundoApellido, String email,int contacto);
 
 	List<Coordinador> getAllCoordinadores();
 

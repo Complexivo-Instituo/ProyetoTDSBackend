@@ -56,7 +56,7 @@ public class EstadoController {
 	}
 	@ApiOperation("Actualizar campos de estado")
 	 @CrossOrigin
-	    @PostMapping("/put-empresa")
+	    @PostMapping("/put-estado")
 	    ResponseEntity<GenericResponse<Object>> putEstado(
 	            @RequestParam(value = "idestado") Long idestado,
 	            @RequestParam(value = "descripcion") String descripcion,

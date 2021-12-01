@@ -32,16 +32,62 @@ public class Coordinador implements Serializable {
 	@Column(name = "idcoordinador", nullable = false)
 	private Long idcoordinador;
 	@Column(name = "estado", nullable = false)
-	private String estado;
+	private int estado;
 
-	@JsonIgnore
+
+	public Coordinador() {
+	}
+
+	public Coordinador(int estado) {
+		this.estado = estado;
+	}
+	
+
+	public Long getIdcoordinador() {
+		return idcoordinador;
+	}
+
+	public void setIdcoordinador(Long idcoordinador) {
+		this.idcoordinador = idcoordinador;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "idpersona")
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	private Persona persona;
+    @JoinColumn(name = "idpersona")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	 private Persona persona;
 
-	@JsonIgnore
+	
 	@OneToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idcarrera")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Carrera carrera;
 }

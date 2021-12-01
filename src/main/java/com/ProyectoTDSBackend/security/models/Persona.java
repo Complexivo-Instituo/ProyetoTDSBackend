@@ -173,5 +173,14 @@ public class Persona {
         this.roles = roles;
     }
 
+	public int getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(int contacto) {
+		this.contacto = contacto;
+	}
+    
+
    
 }

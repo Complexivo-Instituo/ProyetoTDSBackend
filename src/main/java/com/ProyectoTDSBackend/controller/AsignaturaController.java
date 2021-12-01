@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Asignatura;
 import com.ProyectoTDSBackend.models.Convocatoria;
 import com.ProyectoTDSBackend.service.AsignaturaService;
 import com.ProyectoTDSBackend.service.ConvocatoriaService;

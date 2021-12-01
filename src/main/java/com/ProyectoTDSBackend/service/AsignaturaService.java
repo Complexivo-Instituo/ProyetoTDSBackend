@@ -5,7 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
-import com.ProyectoTDSBackend.controller.Asignatura;
+import com.ProyectoTDSBackend.models.Asignatura;
 import com.ProyectoTDSBackend.repository.AsignaturaRepository;
 import com.ProyectoTDSBackend.repository.ConvocatoriaRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;

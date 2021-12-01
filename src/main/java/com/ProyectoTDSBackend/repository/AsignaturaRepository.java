@@ -5,9 +5,10 @@
  */
 package com.ProyectoTDSBackend.repository;
 
-import com.ProyectoTDSBackend.controller.Asignatura;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.ProyectoTDSBackend.models.Asignatura;
 
 /**
  *
