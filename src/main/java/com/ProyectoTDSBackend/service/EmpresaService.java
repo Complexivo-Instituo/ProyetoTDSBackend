@@ -63,7 +63,7 @@ public class EmpresaService {
 	        return response;
 	    }
 	    
-	    public GenericResponse<Object> putEmpresa(Long idempresa, String nombreempresa,String direccion,String descripcion,String email, int contacto) {
+	    public GenericResponse<Object> putEmpresa(Long idempresa, String nombreempresa,String direccion,String descripcion,String email, String contacto) {
 	        GenericResponse<Object> response = new GenericResponse<>();
 	        Empresa empresa = empresaRepository.findById(idempresa).get();
 	        if (empresa.getIdempresa() != null ) {

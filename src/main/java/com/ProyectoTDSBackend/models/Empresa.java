@@ -32,15 +32,15 @@ public class Empresa implements Serializable{
 	 	private String descripcion;
 	@Column(name = "email", nullable = false)
 	 	private String email;
-	@Column(name = "contacto", nullable = false)
-	 	private int contacto;
+	@Column(name = "contacto", length = 10)
+	 	private String contacto;
 	@Column(name = "estado", nullable = false)
 	 	private int estado;
 	 	
 		public Empresa() {
 		}
 
-		public Empresa(String nombreempresa, String direccion, String descripcion, String email,int contacto, int estado) {
+		public Empresa(String nombreempresa, String direccion, String descripcion, String email,String contacto, int estado) {
 			this.nombreempresa = nombreempresa;
 			this.direccion = direccion;
 			this.descripcion = descripcion;
@@ -89,11 +89,11 @@ public class Empresa implements Serializable{
 			this.email = email;
 		}
 
-		public int getContacto() {
+		public String getContacto() {
 			return contacto;
 		}
 
-		public void setContacto(int contacto) {
+		public void setContacto(String contacto) {
 			this.contacto = contacto;
 		}
 

@@ -70,7 +70,7 @@ public class EmpresaController {
 			@RequestParam(value = "nombreempresa") String nombreempresa,
 			@RequestParam(value = "direccion") String direccion,
 			@RequestParam(value = "descripcion") String descripcion, @RequestParam(value = "email") String email,
-			@RequestParam(value = "contacto") int contacto) {
+			@RequestParam(value = "contacto") String contacto) {
 		return new ResponseEntity<GenericResponse<Object>>(
 				empresaService.putEmpresa(idempresa, nombreempresa, direccion, descripcion, email, contacto),
 				HttpStatus.OK);
