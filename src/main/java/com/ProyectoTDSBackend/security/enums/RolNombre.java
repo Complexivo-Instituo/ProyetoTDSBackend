@@ -10,5 +10,5 @@ package com.ProyectoTDSBackend.security.enums;
  * @author LENOVO
  */
 public enum RolNombre {
-    ROLE_ADMIN, ROLE_USER
+    ROLE_ADMIN, ROLE_ESTU, ROLE_ACADEMICO,ROLE_EMPRESA, ROLE_COORDINA, ROLE_VICULA
 }

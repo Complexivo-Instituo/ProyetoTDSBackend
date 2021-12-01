@@ -58,22 +58,26 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
 
- @PostMapping("/nuevo")
-    public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
+    @PostMapping("/nuevo")
+    public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
-        if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario()))
+        }
+        if (usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
+        }
+        if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
             return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        Persona usuario =
-                new Persona(nuevoUsuario.getIdentificacion(), nuevoUsuario.getPrimernombre(), nuevoUsuario.getSegundonombre(),nuevoUsuario.getPrimerapellido(), nuevoUsuario.getSegundoapellido(),nuevoUsuario.getContacto(),
-                      nuevoUsuario.getEmail(), nuevoUsuario.getNombreUsuario(), passwordEncoder.encode(nuevoUsuario.getPassword()));
+        }
+        Persona usuario
+                = new Persona(nuevoUsuario.getIdentificacion(), nuevoUsuario.getPrimernombre(), nuevoUsuario.getSegundonombre(), nuevoUsuario.getPrimerapellido(), nuevoUsuario.getSegundoapellido(), nuevoUsuario.getContacto(),
+                        nuevoUsuario.getEmail(), nuevoUsuario.getNombreUsuario(), passwordEncoder.encode(nuevoUsuario.getPassword()));
 
         Set<Rol> roles = new HashSet<>();
-        roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
-        if(nuevoUsuario.getRoles().contains("admin"))
+        roles.add(rolService.getByRolNombre(RolNombre.ROLE_ESTU).get());
+        if (nuevoUsuario.getRoles().contains("admin")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+        }
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
