@@ -29,8 +29,8 @@ public class CreateRoles implements CommandLineRunner {
 //        Rol rolAcademico = new Rol(RolNombre.ROLE_ACADEMICO);
 //        Rol rolCordinador= new Rol(RolNombre.ROLE_COORDINA);
 //        Rol rolEmpresa= new Rol(RolNombre.ROLE_EMPRESA);
-//        Rol rolVincula = new Rol(RolNombre.ROLE_VICULA);
-
+//       Rol rolVincula = new Rol(RolNombre.ROLE_VICULA);
+//
 //      Rol rolResponsable = new Rol(RolNombre.ROLE_RESPONSA);
 //        rolService.save(rolAdmin);
 //        rolService.save(roleEstudiante);
@@ -38,6 +38,6 @@ public class CreateRoles implements CommandLineRunner {
 //        rolService.save(rolCordinador);
 //        rolService.save(rolEmpresa);
 //        rolService.save(rolVincula);
-//        rolService.save(rolResponsable);
+//       rolService.save(rolResponsable);
   }
 }

@@ -32,8 +32,8 @@ public class VinculacionController {
      */
 	 @CrossOrigin
 	    @PostMapping("/add-vinculacion")
-	    ResponseEntity<GenericResponse<Object>> saveVinculacion(@RequestBody Vinculacion vinculacion) {
-	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.createVinculacion(vinculacion), HttpStatus.OK);
+	    ResponseEntity<GenericResponse<Object>> saveVinculacion(@RequestBody Vinculacion vinculacion, @RequestParam(value = "idpersona") int idpersona) {
+	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.createVinculacion(vinculacion,idpersona), HttpStatus.OK);
 	    }
 
 	 
@@ -44,7 +44,7 @@ public class VinculacionController {
 	    }
 	   
 	    /**
-	     * CONSTRUCCION DEL METODO PUT PARA ACTUALIZAR DATOS DEL ARRENDATARIO
+	     * CONSTRUCCION DEL METODO PUT PARA ACTUALIZAR DATOS DE VINCULACIÓN
 	     */
 	    @CrossOrigin
 	    @PostMapping("/put-vinculacion")

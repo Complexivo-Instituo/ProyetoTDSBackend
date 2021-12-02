@@ -3,11 +3,12 @@ package com.ProyectoTDSBackend.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.ProyectoTDSBackend.models.Convenio;
 import com.ProyectoTDSBackend.models.Coordinador;
 
 @Repository
-public interface CoordinadorRepository extends JpaRepository<Coordinador, Long> {
-
+public interface ConvenioRepository extends JpaRepository<Convenio, Long> {
 	
-	Coordinador findByidcoordinador(Long idcoordinador);
+	Coordinador findByidconvenio(Long idconvenio);
+
 }

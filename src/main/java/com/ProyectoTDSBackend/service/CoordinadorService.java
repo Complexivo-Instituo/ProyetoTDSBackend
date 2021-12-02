@@ -7,7 +7,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 
 public interface CoordinadorService {
 
-	GenericResponse<Object> createCoordinador(Coordinador coordinador);
+	GenericResponse<Object> createCoordinador(Coordinador coordinador,Long idcarrera,int idpersona);
 
 	GenericResponse<Object> putCoordinador(int idPersona, Long idcoordinador, String identificacion,
 			String primernombre, String segundonombre, String primerapellido, String SegundoApellido, String email,int contacto);

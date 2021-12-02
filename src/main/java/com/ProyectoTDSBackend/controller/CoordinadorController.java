@@ -29,8 +29,8 @@ public class CoordinadorController {
      */
 	 @CrossOrigin
 	    @PostMapping("/add-coordinador")
-	    ResponseEntity<GenericResponse<Object>> saveCoordinador(@RequestBody Coordinador coordinador) {
-	        return new ResponseEntity<GenericResponse<Object>>(coordinadorService.createCoordinador(coordinador), HttpStatus.OK);
+	    ResponseEntity<GenericResponse<Object>> saveCoordinador(@RequestBody Coordinador coordinador, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
+	        return new ResponseEntity<GenericResponse<Object>>(coordinadorService.createCoordinador(coordinador,idcarrera,idpersona), HttpStatus.OK);
 	    }
 	 
 	 @CrossOrigin
@@ -58,7 +58,7 @@ public class CoordinadorController {
 	        return new ResponseEntity<GenericResponse<Object>>(coordinadorService.putCoordinador(idpersona, idcoordinador, identificacion, primernombre, segundonombre, primerapellido, segundoapellido, email, contacto), HttpStatus.OK);
 	    }
 	    @CrossOrigin
-	    @GetMapping("/getById-vinculacion")
+	    @GetMapping("/getById-coordinador")
 	    public Coordinador getByICoordinador(@RequestParam(value = "idcoordinador") Long idcoordinador) {
 	        return coordinadorService.getById(idcoordinador);
 	    }

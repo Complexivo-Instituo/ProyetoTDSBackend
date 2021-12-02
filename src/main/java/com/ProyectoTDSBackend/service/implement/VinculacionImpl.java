@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ProyectoTDSBackend.models.Vinculacion;
 import com.ProyectoTDSBackend.repository.PersonaRepository;
 import com.ProyectoTDSBackend.repository.VinculacionRepository;
+import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.service.VinculacionService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
+import com.ProyectoTDSBackend.security.models.Persona;
 
 @Service
 public class VinculacionImpl implements VinculacionService {
@@ -26,21 +28,51 @@ public class VinculacionImpl implements VinculacionService {
 
 	@Transactional
 	@Override
-	public GenericResponse<Object> createVinculacion(Vinculacion vinculacion) {
+	public GenericResponse<Object> createVinculacion(Vinculacion vinculacion, int idpersona) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		try {
-			if (personaRepository.findByIdentificacion(vinculacion.getPersona().getIdentificacion()) != null) {
-				vinculacion.setPersona(
-						personaRepository.findByIdentificacion(vinculacion.getPersona().getIdentificacion()));
-				vinculacionRepository.save(vinculacion);
-				response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-				response.setObject("Vinculacion creada");
-				response.setStatus(ParametersApp.SUCCESSFUL.value());
+			if (vinculacionRepository.findById(vinculacion.getIdvinculacion()) != null) {
+				if (personaRepository.findById(idpersona).isEmpty() == false) {
+					if (personaRepository.findByIdentificacion(vinculacion.getPersona().getIdentificacion()) != null) {
+						vinculacion.setRolvinculacion(vinculacion.getRolvinculacion().toUpperCase());
+						Persona persona = personaRepository.findByIdentificacion(vinculacion.getPersona().getIdentificacion());
+						persona.setPrimernombre(vinculacion.getPersona().getPrimernombre().toUpperCase());
+						persona.setSegundonombre(vinculacion.getPersona().getSegundonombre().toUpperCase());
+						persona.setPrimerapellido(vinculacion.getPersona().getPrimerapellido().toUpperCase());
+						persona.setSegundoapellido(vinculacion.getPersona().getSegundoapellido().toUpperCase());
+						persona.setContacto(vinculacion.getPersona().getContacto());
+						persona.setEmail(vinculacion.getPersona().getSegundoapellido());
+						persona.setEmail(vinculacion.getPersona().getSegundoapellido());
+						persona.setEmail(vinculacion.getPersona().getSegundoapellido());
+						vinculacion.setPersona(persona);
+						vinculacionRepository.save(vinculacion);
+						response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+						response.setObject("Vinculacion creado");
+						response.setStatus(ParametersApp.SUCCESSFUL.value());
+						// return new ResponseEntity<>("Usuario creado", HttpStatus.CREATED);
+					}else {
+						vinculacion.setRolvinculacion(vinculacion.getRolvinculacion().toUpperCase());
+                        vinculacion.getPersona().setPrimernombre(vinculacion.getPersona().getPrimernombre().toUpperCase());
+                        vinculacion.getPersona().setSegundonombre(vinculacion.getPersona().getSegundonombre().toUpperCase());
+//                        vinculacion.getPersona().setPrimerapellido(vinculacion.getPersona().getPrimerapellido().toUpperCase());
+//                        vinculacion.getPersona().setSegundoapellido(vinculacion.getPersona().getSegundoapellido().toUpperCase());
+//                        vinculacion.getPersona().setContacto(vinculacion.getPersona().getContacto());
+//                        vinculacion.getPersona().setEmail(vinculacion.getPersona().getSegundoapellido());
+                  
+                        vinculacionRepository.save(vinculacion);
+                        response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                        response.setObject("usuario creado");
+                        response.setStatus(ParametersApp.SUCCESSFUL.value());
+					}
+				} else {
+					response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+                    response.setObject("No se puede asignar vinculacion a  persona");
+                    response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+				}
 			} else {
-				vinculacionRepository.save(vinculacion);
-				response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-				response.setObject("Vinculacion creada");
-				response.setStatus(ParametersApp.SUCCESSFUL.value());
+				  response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+	                response.setObject("La vinculacion ya existe");
+	                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());

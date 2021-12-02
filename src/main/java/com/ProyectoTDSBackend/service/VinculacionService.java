@@ -10,7 +10,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 public interface VinculacionService {
 
 
-	 GenericResponse<Object> createVinculacion(Vinculacion vinculacion);
+	 GenericResponse<Object> createVinculacion(Vinculacion vinculacion,int idpersona);
 
 	    GenericResponse<Object> putVinculacion(int idPersona, Long idvinculacion, String identificacion, String primernombre, String segundonombre,String primerapellido,String SegundoApellido, String email);
 
