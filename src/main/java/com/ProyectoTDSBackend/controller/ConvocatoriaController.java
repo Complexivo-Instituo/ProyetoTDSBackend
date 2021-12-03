@@ -48,6 +48,7 @@ public class ConvocatoriaController {
     }
 
     // 
+    @ApiOperation("Crea las convocatorias")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Convocatoria convocatoria1) {
         if (StringUtils.isBlank(convocatoria1.getDescripcion_convocatoria())) {
@@ -78,7 +79,7 @@ public class ConvocatoriaController {
                 convocatoriaService.putActividad(idconvocatoria, descripcion, fecha_inicio, fecha_fin),
                 HttpStatus.OK);
     }
-    
+
     @ApiOperation("Eliminado logico de convocatoria")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteConvocatoria/{idconvocatoria}")

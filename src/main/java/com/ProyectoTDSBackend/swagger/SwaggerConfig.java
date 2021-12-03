@@ -62,7 +62,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 "Descripción",
                 "2.0",
                 "Términos y Condiciones",
-                new Contact("Daniel Brito, Corina Guzman", "https://www.tecazuay.edu.ec/main/index.php", "info@tecazuay.edu.ec"),
+                new Contact("Caso Practico 2, examen complexivo", "https://www.tecazuay.edu.ec/main/index.php", "info@tecazuay.edu.ec"),
                 "Licencia",
                 "www.licencia.com",
                 Collections.emptyList()
