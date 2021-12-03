@@ -13,6 +13,6 @@ public interface EstadoRepository extends JpaRepository<Estado, Long> {
 	
 	Estado findByidestado(Long idestado);
 
-	Estado findBydescripcion(String descripción);
+	Estado findBydescripcion(String descripcion);
 
 }
