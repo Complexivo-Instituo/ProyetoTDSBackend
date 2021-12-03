@@ -6,9 +6,7 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
-import com.ProyectoTDSBackend.models.Actividad;
 import com.ProyectoTDSBackend.models.Convocatoria;
-import com.ProyectoTDSBackend.models.Empresa;
 import com.ProyectoTDSBackend.service.ConvocatoriaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;

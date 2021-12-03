@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.Estudiante;
-import com.ProyectoTDSBackend.models.Vinculacion;
-import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.service.EstudianteService;
-import com.ProyectoTDSBackend.service.VinculacionService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;

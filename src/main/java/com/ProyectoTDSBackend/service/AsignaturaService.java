@@ -7,7 +7,7 @@ package com.ProyectoTDSBackend.service;
 
 import com.ProyectoTDSBackend.models.Asignatura;
 import com.ProyectoTDSBackend.repository.AsignaturaRepository;
-import com.ProyectoTDSBackend.repository.ConvocatoriaRepository;
+import com.ProyectoTDSBackend.repository.CarreraRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
 import java.util.Date;
@@ -25,34 +25,60 @@ public class AsignaturaService {
 
     @Autowired
     AsignaturaRepository asignaturaRepository;
-
+    @Autowired
+    CarreraRepository carreraRepository;
     
     public List<Asignatura> getlListaAsignaturas() {
         return asignaturaRepository.findAll();
     }
 
-    public Optional<Asignatura> getOne(Long id) {
-        return asignaturaRepository.findById(id);
+    public Optional<Asignatura> getOne(Long idasignatura) {
+        return asignaturaRepository.findById(idasignatura);
     }
 
-    public void save(Asignatura producto) {
-        asignaturaRepository.save(producto);
+
+    public GenericResponse<Object> saveAsignatura(Asignatura asignatura,Long idcarrera) {
+    	GenericResponse<Object> response = new GenericResponse<>();
+    	if(carreraRepository.findById(idcarrera).isEmpty()==true) {
+    		
+    		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+			response.setObject("No se puede crear la asignatura porque no se encontró la carrera");
+			response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+    	}else {
+    		
+    		asignatura.setCarrera(carreraRepository.findById(idcarrera).get());
+    		asignaturaRepository.save(asignatura);
+			response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+			response.setObject("La asignatura se ha creado");
+			response.setStatus(ParametersApp.SUCCESSFUL.value());
+    	}
+        
+    	return response;
     }
 
-    public boolean existsById(Long id) {
-        return asignaturaRepository.existsById(id);
-    }
 
-    public GenericResponse<Object> putAsignatura(Long idasignatura, String nombreasignatura, Float promedio) {
+
+    public GenericResponse<Object> putAsignatura(Long idasignatura,String nombreasignatura, Date fechacreacion,Long idcarrera) {
         GenericResponse<Object> response = new GenericResponse<>();
-        Asignatura asignatura = asignaturaRepository.findById(idasignatura).get();
-        if (asignatura.getIdasiganatura()!= null) {
-            asignatura.setNombreasignatura(nombreasignatura.toUpperCase());
-            asignatura.setPromedio(promedio);
-            asignaturaRepository.save(asignatura);
-            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-            response.setObject("Actualizado correctamente");
-            response.setStatus(ParametersApp.SUCCESSFUL.value());
+
+        if (asignaturaRepository.findById(idasignatura).isEmpty()== false) {
+        	Asignatura asignatura=asignaturaRepository.findById(idasignatura).get();
+        	if(carreraRepository.findById(idcarrera).isEmpty() == true) {
+        		
+        		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+				response.setObject("No se puede actualizar la asignatura porque no se encontró la carrera");
+				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+        		
+        	}else {
+        		asignatura.setCarrera(carreraRepository.findByidcarrera(idcarrera));
+        		asignatura.setNombreasignatura(nombreasignatura.toUpperCase());
+                asignatura.setFechacreacion(fechacreacion);
+                asignaturaRepository.save(asignatura);
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject("Actualizado correctamente");
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+        	}
+           
         } else {
             response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
             response.setObject("Error al actualizar");
@@ -61,7 +87,4 @@ public class AsignaturaService {
         return response;
     }
 
-    public Optional<Asignatura> getOne(long id) {
-        return asignaturaRepository.findById(id);
-    }
 }

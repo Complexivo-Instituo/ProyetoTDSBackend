@@ -22,9 +22,9 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/tutorDocumento")
+@RequestMapping("/tutorAcedemicoDocumento")
 @CrossOrigin({ "*" })
-public class TutorDocumentoController {
+public class TutorAcadDocController {
 	
 	@Autowired
 	TutorAcadDocService tutdocService;
@@ -41,15 +41,15 @@ public class TutorDocumentoController {
 	    }
 	 
 	 @GetMapping("/getById-tutoracademico")
-	    public List<TutorAcadDocumento> getBIdEstudiante(@RequestParam(value = "idtutoracad") Long idtutoracad) {
+	    public List<TutorAcadDocumento> getByIdtutoracademico(@RequestParam(value = "idtutoracad") Long idtutoracad) {
 	        return tutdocService.FindBytutoracademico(idtutoracad);
 	    }
 	 
-//Listar todas las personas
+//Listar todas los documentos
 	@ApiOperation("Muestra el listado de documentos asignados a cada tutor academico")
 	@CrossOrigin
 	@GetMapping("/findAll-Documentos")
-	public List<TutorAcadDocumento> getAllDocsEstudiante() {
+	public List<TutorAcadDocumento> getAllDocsTutores() {
 		return tutdocService.getAllDocumentosAsingnados();
 	}
 

@@ -3,13 +3,11 @@ package com.ProyectoTDSBackend.service.implement;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ProyectoTDSBackend.models.Convenio;
-import com.ProyectoTDSBackend.models.Coordinador;
 import com.ProyectoTDSBackend.repository.ConvenioRepository;
 import com.ProyectoTDSBackend.repository.CoordinadorRepository;
 import com.ProyectoTDSBackend.repository.EmpresaRepository;

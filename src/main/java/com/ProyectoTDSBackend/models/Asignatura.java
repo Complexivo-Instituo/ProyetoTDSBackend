@@ -5,48 +5,55 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
  * @author LENOVO
  */
 @Entity
-@Table(name = "asiganatura")
-public class Asignatura {
+@Table(name = "asignatura")
+public class Asignatura implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idasiganatura", nullable = false)
-    private Long idasiganatura;
+    private Long idasignatura;
 
     @Column(name = "nombreasignatura", nullable = false)
     private String nombreasignatura;
+    
+    @Column(name = "fechacreacion", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechacreacion;	
 
-    @Column(name = "promedio", nullable = false)
-    private float promedio;
-
-    public Asignatura() {
+    public Long getIdasignatura() {
+        return idasignatura;
     }
 
-    public Asignatura(String nombreasignatura, float promedio) {
-        
-        this.nombreasignatura = nombreasignatura;
-        this.promedio = promedio;
-    }
-
-    public Long getIdasiganatura() {
-        return idasiganatura;
-    }
-
-    public void setIdasiganatura(Long idasiganatura) {
-        this.idasiganatura = idasiganatura;
+    public void setIdasignatura(Long idasignatura) {
+        this.idasignatura = idasignatura;
     }
 
     public String getNombreasignatura() {
@@ -56,14 +63,27 @@ public class Asignatura {
     public void setNombreasignatura(String nombreasignatura) {
         this.nombreasignatura = nombreasignatura;
     }
+    
+    public Date getFechacreacion() {
+		return fechacreacion;
+	}
 
-    public float getPromedio() {
-        return promedio;
-    }
+	public void setFechacreacion(Date fechacreacion) {
+		this.fechacreacion = fechacreacion;
+	}
 
-    public void setPromedio(float promedio) {
-        this.promedio = promedio;
-    }
+	public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idcarrera")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	 private Carrera carrera;
     
     
 }

@@ -16,5 +16,9 @@ import com.ProyectoTDSBackend.models.Asignatura;
  */
 @Repository
 public interface AsignaturaRepository extends JpaRepository<Asignatura, Long>{
+	
+	Asignatura findByidasignatura(Long idasignatura);
+
+	Asignatura findBynombreasignatura(String nombreasignatura);
     
 }
