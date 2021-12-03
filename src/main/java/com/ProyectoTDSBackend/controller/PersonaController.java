@@ -31,13 +31,14 @@ public class PersonaController {
 	@Autowired
 	PersonaService personaService;
 	
+	 @CrossOrigin({"*"})
 	 @GetMapping("/getById-Persona")
 	    public Persona getByIPersona(@RequestParam(value = "idpersona") int idpersona) {
 	        return personaService.getById(idpersona);
 	    }
 //Listar todas las personas
 	@ApiOperation("Muestra el listado de personas")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Personas")
 	public List<Persona> getAllPersonas() {
 		return personaService.getAllPersonas();

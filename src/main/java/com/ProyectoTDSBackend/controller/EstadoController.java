@@ -30,7 +30,7 @@ public class EstadoController {
 
 	
 	@ApiOperation("Extraer por descripción de estado")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/empresa/{descripcion}")
 	public ResponseEntity<Estado> getByDescripcion(@PathVariable("descripcion") String descripcion) {
 
@@ -40,22 +40,22 @@ public class EstadoController {
 		Estado empresa = estadoService.getbydescripcion(descripcion);
 		return new ResponseEntity(empresa, HttpStatus.OK);
 	}
-//Listar todas las empresas
+	
 	@ApiOperation("Muestra el listado de estados descripción y color")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Estado")
 	public List<Estado> getAllEstados() {
 		return estadoService.getAllEstados();
 	}
 //añadir un estado
 	@ApiOperation("Permite añadir estados")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/add-Estado")
 	ResponseEntity<GenericResponse<Object>> saveEstado(@RequestBody Estado estado) {
 		return new ResponseEntity<GenericResponse<Object>>(estadoService.createEstado(estado), HttpStatus.OK);
 	}
 	@ApiOperation("Actualizar campos de estado")
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/put-estado")
 	    ResponseEntity<GenericResponse<Object>> putEstado(
 	            @RequestParam(value = "idestado") Long idestado,

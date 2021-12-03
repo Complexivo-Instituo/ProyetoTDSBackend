@@ -30,7 +30,7 @@ public class EstudiantAsignatura implements Serializable{
     private Long idasigest;
 	
 	@Column(name = "promedio", nullable = false)
-    private float promedio;
+    private double promedio;
 	
 	
 	public Long getIdasigest() {
@@ -41,11 +41,13 @@ public class EstudiantAsignatura implements Serializable{
 		this.idasigest = idasigest;
 	}
 
-	public float getPromedio() {
+
+
+	public double getPromedio() {
 		return promedio;
 	}
 
-	public void setPromedio(float promedio) {
+	public void setPromedio(double promedio) {
 		this.promedio = promedio;
 	}
 

@@ -31,21 +31,21 @@ public class ResponsablePPPController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/add-ResponsablePPP")
 	    ResponseEntity<GenericResponse<Object>> saveResponsablePPp(@RequestBody ResponsablePPP responsable, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
 	        return new ResponseEntity<GenericResponse<Object>>(responsableService.createResponsablePPP(responsable, idcarrera, idpersona), HttpStatus.OK);
 	    }
 
 	 
-	   @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/findAll-ResponsablePPP")
 	    public List<ResponsablePPP> getAllResponsables() {
 	        return responsableService.getAllResponsablesPPP();
 	    }
 	   
 	
-	    @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/getById-Responsable")
 	    public ResponsablePPP getByIdResponsable(@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
 	        return responsableService.getById(idresponsableppp);

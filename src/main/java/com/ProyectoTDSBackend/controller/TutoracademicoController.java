@@ -30,21 +30,21 @@ public class TutoracademicoController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/add-TutorAcademico")
 	    ResponseEntity<GenericResponse<Object>> saveTutorAcademico(@RequestBody TutorAcademico tutor, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
 	        return new ResponseEntity<GenericResponse<Object>>(tutoracadService.createTutorAcademico(tutor, idcarrera, idpersona), HttpStatus.OK);
 	    }
 
 	 
-	   @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/findAll-Tutores")
 	    public List<TutorAcademico> getAllTutores() {
 	        return tutoracadService.getAllTutoresAcademicos();
 	    }
 	   
 	
-	    @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/getById-Tutor")
 	    public TutorAcademico getByIdTutor(@RequestParam(value = "idtutoracad") Long idtutoracad) {
 	        return tutoracadService.getById(idtutoracad);

@@ -28,7 +28,7 @@ public class ConvenioController {
 	@Autowired
 	ConvenioService convenioService;
 	
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/add-convenio")
 	    ResponseEntity<GenericResponse<Object>> saveConvenio(@RequestBody Convenio convenio, @RequestParam(value = "idempresa") Long idempresa,
 	    		@RequestParam(value = "idvinculacion") Long idvinculacion, @RequestParam(value = "idcoordinador") Long idcoordinador) {
@@ -36,7 +36,7 @@ public class ConvenioController {
 	    }
 
 	 
-	   @CrossOrigin
+	 	@CrossOrigin({"*"})
 	    @GetMapping("/findAll-convenios")
 	    public List<Convenio> getAllConvenios() {
 	        return convenioService.getAllConvenio();
@@ -45,7 +45,7 @@ public class ConvenioController {
 	    /**
 	     * CONSTRUCCION DEL METODO PUT PARA ACTUALIZAR DATOS DE Convenio
 	     */
-	    @CrossOrigin
+	 	 @CrossOrigin({"*"})
 	    @PostMapping("/put-convenio")
 	    ResponseEntity<GenericResponse<Object>> putConvenio(
 	    		 @RequestParam(value = "idconvenio") Long idconvenio,

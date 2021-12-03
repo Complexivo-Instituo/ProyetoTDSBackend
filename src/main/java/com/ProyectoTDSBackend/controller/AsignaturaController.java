@@ -46,14 +46,14 @@ public class AsignaturaController {
 
 	//
 	@PostMapping("/add-createAsignatura")
-	@CrossOrigin
+	@CrossOrigin({"*"})
 	public ResponseEntity<GenericResponse<Object>> saveAsignatura(@RequestBody Asignatura asignatura,
 			@RequestParam(value = "idcarrera") Long idcarrera) {
 		return new ResponseEntity<GenericResponse<Object>>(asignaturaService.saveAsignatura(asignatura, idcarrera),
 				HttpStatus.OK);
 	}
 	
-    @CrossOrigin
+	 @CrossOrigin({"*"})
     @PostMapping("/put-Asignatura")
     ResponseEntity<GenericResponse<Object>> putAsignatura(
     		 @RequestParam(value = "idasignatura") Long idasignatura,
@@ -64,7 +64,7 @@ public class AsignaturaController {
     ) {
         return new ResponseEntity<GenericResponse<Object>>(asignaturaService.putAsignatura(idasignatura, nombreasignatura, fechacreacion, idcarrera), HttpStatus.OK);
     }
-    @CrossOrigin
+	 @CrossOrigin({"*"})
     @GetMapping("/getById-estudiantes")
     public Optional<Asignatura> getByIPersona(@RequestParam(value = "idasignatura") Long idasignatura) {
         return asignaturaService.getOne(idasignatura);

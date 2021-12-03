@@ -33,13 +33,13 @@ public class EstudianteDocumentoController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/asignar-DocumentoAestudiante")
 	    ResponseEntity<GenericResponse<Object>> saveVinculacion(@RequestBody EstudianteRelDoc estdoc,
 	    		@RequestParam(value = "idestudiante")Long idestudiante,@RequestParam(value = "iddocumento")Long iddocumento) {
 	        return new ResponseEntity<GenericResponse<Object>>(estdocService.aginarDocumentoAEstudiante(estdoc, idestudiante, iddocumento), HttpStatus.OK);
 	    }
-	 
+	 @CrossOrigin({"*"})
 	 @GetMapping("/getById-estudiante")
 	    public List<EstudianteRelDoc> getBIdEstudiante(@RequestParam(value = "idestudiante") Long idestudiante) {
 	        return estdocService.FindByestudiante(idestudiante);
@@ -47,7 +47,7 @@ public class EstudianteDocumentoController {
 	 
 //Listar todas las personas
 	@ApiOperation("Muestra el listado de documentos asignados a cada estudiante")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Documentos")
 	public List<EstudianteRelDoc> getAllDocsEstudiante() {
 		return estdocService.getAllDocsEstudiantes();

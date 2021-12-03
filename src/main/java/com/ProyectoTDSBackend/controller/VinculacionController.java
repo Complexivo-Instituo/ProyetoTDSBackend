@@ -30,14 +30,14 @@ public class VinculacionController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/add-vinculacion")
 	    ResponseEntity<GenericResponse<Object>> saveVinculacion(@RequestBody Vinculacion vinculacion, @RequestParam(value = "idpersona") int idpersona) {
 	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.createVinculacion(vinculacion,idpersona), HttpStatus.OK);
 	    }
 
 	 
-	   @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/findAll-vinculacion")
 	    public List<Vinculacion> getAllVinculaciones() {
 	        return vinculacionService.getAllVinculaciones();
@@ -46,7 +46,7 @@ public class VinculacionController {
 	    /**
 	     * CONSTRUCCION DEL METODO PUT PARA ACTUALIZAR DATOS DE VINCULACIÓN
 	     */
-	    @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/put-vinculacion")
 	    ResponseEntity<GenericResponse<Object>> putArrendatario(
 	    		 @RequestParam(value = "idpersona") int idpersona,
@@ -60,13 +60,13 @@ public class VinculacionController {
 	    ) {
 	        return new ResponseEntity<GenericResponse<Object>>(vinculacionService.putVinculacion(idpersona, idvinculacion, identificacion, primernombre, segundonombre, primerapellido, segundoapellido, email), HttpStatus.OK);
 	    }
-	    @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/getById-vinculacion")
 	    public Vinculacion getByIdVinculacion(@RequestParam(value = "idvinculacion") Long idvinculacion) {
 	        return vinculacionService.getById(idvinculacion);
 	    }
 	    
-	    @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @GetMapping("/getByrolvinculacion-vinculacion")
 	    public List<Vinculacion> getByIdRolVinculacion(@RequestParam(value = "rolvinculacion") String rolvinculacion) {
 	        return vinculacionService.getByrolvinculacion(rolvinculacion);

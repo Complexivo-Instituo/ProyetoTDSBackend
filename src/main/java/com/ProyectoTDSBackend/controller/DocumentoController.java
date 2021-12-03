@@ -32,36 +32,23 @@ public class DocumentoController {
 	@Autowired
 	DocumentoService documentoService;
 
-//	@ApiOperation("Extraer por nombre de empresa")
-//	@CrossOrigin
-//	@GetMapping("/documento/{nombre_anexo}")
-//	public ResponseEntity<Documento> getByNombre(@PathVariable("nombre_anexo") String nombre_anexo) {
-//
-//		if (!documentoService.existsBynombre_anexo(nombre_anexo)) {
-//			return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-//		}
-//		Documento documento = documentoService.getbynombre_anexo(nombre_anexo);
-//		return new ResponseEntity(documento, HttpStatus.OK);
-//	}
 
-//Listar todas las empresas
 	@ApiOperation("Muestra el listado de documentos")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAllDisponibles-Documentos")
 	public List<Documento> getAllDocumentosDisponibles() {
 		return documentoService.getAllDocumentos();
 	}
 
-//añadir una empresa
 	@ApiOperation("Permite añadir documentos")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/add-Documento")
 	ResponseEntity<GenericResponse<Object>> saveDocumento(@RequestBody Documento documento) {
 		return new ResponseEntity<GenericResponse<Object>>(documentoService.createDocumento(documento), HttpStatus.OK);
 	}
 
 	@ApiOperation("Actualizar campos de documento")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/put-documento")
 	ResponseEntity<GenericResponse<Object>> putDocumento(@RequestParam(value = "iddocumento") Long iddocumento,
 			@RequestParam(value = "nombreanexo") String nombre_anexo,
@@ -71,14 +58,6 @@ public class DocumentoController {
 				documentoService.putDocumento(iddocumento, nombre_anexo, tipo_documento, enlace_documento),
 				HttpStatus.OK);
 	}
-//	@ApiOperation("Eliminado logico de empresa")
-//    @CrossOrigin({"*"})
-//    @PatchMapping("/deleteEmpresa/{idempresa}")
-//    public ResponseEntity<?> deleteEmpresa(@RequestParam(value = "idempresa") Long idempresa) {
-//        Empresa empresa = empresaService.getOne(idempresa).get();
-//        empresa.setEstado(0);
-//        empresaService.save(empresa);
-//        return new ResponseEntity(new Mensaje("empresa eliminada"), HttpStatus.OK);
-//    }
+
 
 }

@@ -30,7 +30,7 @@ public class CarreraController {
 	CarreraService carreraService;
 	
 	@ApiOperation("Extraer por nombre")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/carrera/{nombre}")
 	public ResponseEntity<Carrera> getByNombre(@PathVariable("nombre") String nombre) {
 
@@ -42,20 +42,20 @@ public class CarreraController {
 	}
 //Listar todas las carreras
 	@ApiOperation("Muestra el listado de carreras")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Carreras")
 	public List<Carrera> getAllCarreras() {
 		return carreraService.getAllCarreras();
 	}
-//añadir un estado
+	
 	@ApiOperation("Permite añadir carreras")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/add-Carrera")
 	ResponseEntity<GenericResponse<Object>> saveCarrero(@RequestBody Carrera carrera) {
 		return new ResponseEntity<GenericResponse<Object>>(carreraService.createCarrera(carrera), HttpStatus.OK);
 	}
 	@ApiOperation("Actualizar campos de carrera")
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/put-carrera")
 	    ResponseEntity<GenericResponse<Object>> putCarrera(
 	            @RequestParam(value = "idcarrera") Long idcarrera,

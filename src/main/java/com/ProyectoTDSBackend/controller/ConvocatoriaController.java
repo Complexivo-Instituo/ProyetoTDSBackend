@@ -47,6 +47,7 @@ public class ConvocatoriaController {
 
     // 
     @ApiOperation("Crea las convocatorias")
+    @CrossOrigin({"*"})
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Convocatoria convocatoria1) {
         if (StringUtils.isBlank(convocatoria1.getDescripcion_convocatoria())) {
@@ -66,7 +67,7 @@ public class ConvocatoriaController {
     }
 
     @ApiOperation("Actualizar convocatoria")
-    @CrossOrigin
+    @CrossOrigin({"*"})
     @PostMapping("/actualizarConvocatoria")
     ResponseEntity<GenericResponse<Object>> putConvocatoria(
             @RequestParam(value = "idconvocatoria") Long idconvocatoria,

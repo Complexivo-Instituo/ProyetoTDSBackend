@@ -1,18 +1,15 @@
 package com.ProyectoTDSBackend.service.implement;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ProyectoTDSBackend.models.TutorAcadDocumento;
-import com.ProyectoTDSBackend.models.TutorAcademico;
 import com.ProyectoTDSBackend.repository.DocumentoRepository;
 import com.ProyectoTDSBackend.repository.TutorAcadDocRepository;
 import com.ProyectoTDSBackend.repository.TutorAcadRepository;
 import com.ProyectoTDSBackend.service.TutorAcadDocService;
-import com.ProyectoTDSBackend.service.TutorAcadService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
 

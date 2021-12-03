@@ -36,7 +36,7 @@ public class EmpresaController {
 	EmpresaRepository empresaRepository;
 
 	@ApiOperation("Extraer por nombre de empresa")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/empresa/{nombreempresa}")
 	public ResponseEntity<Empresa> getByNombre(@PathVariable("nombreempresa") String nombreempresa) {
 
@@ -49,7 +49,7 @@ public class EmpresaController {
 
 //Listar todas las empresas
 	@ApiOperation("Muestra el listado de empresas")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAllDisponibles-Empresa")
 	public List<Empresa> getAllEmpresasDisponibles() {
 		return empresaService.getAllEmpresasHabilitados();
@@ -57,14 +57,14 @@ public class EmpresaController {
 
 //añadir una empresa
 	@ApiOperation("Permite añadir empresas")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/add-Empresa")
 	ResponseEntity<GenericResponse<Object>> saveEmpresa(@RequestBody Empresa empresa) {
 		return new ResponseEntity<GenericResponse<Object>>(empresaService.createEmpresa(empresa), HttpStatus.OK);
 	}
 
 	@ApiOperation("Actualizar campos de empresa")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@PostMapping("/put-empresa")
 	ResponseEntity<GenericResponse<Object>> putEmpresa(@RequestParam(value = "idempresa") Long idempresa,
 			@RequestParam(value = "nombreempresa") String nombreempresa,

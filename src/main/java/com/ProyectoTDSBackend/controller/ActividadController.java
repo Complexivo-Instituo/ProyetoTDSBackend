@@ -63,7 +63,7 @@ public class ActividadController {
 
     @ApiOperation("Actualizar campos de la actividad")
     @CrossOrigin
-    @PostMapping("/actualizarActividad")
+    @PostMapping("/put-Actividad")
     ResponseEntity<GenericResponse<Object>> putEmpresa(
             @RequestParam(value = "idactividad") Long idactividad,
             @RequestParam(value = "horario") String horario,

@@ -32,7 +32,7 @@ public class EstudianteController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/add-estudiante")
 	    ResponseEntity<GenericResponse<Object>> saveVinculacion(@RequestBody Estudiante estudiante, @RequestParam(value = "idpersona") int idpersona) {
 	        return new ResponseEntity<GenericResponse<Object>>(estudianteService.createEstudiante(estudiante, idpersona), HttpStatus.OK);
@@ -43,7 +43,7 @@ public class EstudianteController {
 	    }
 //Listar todas las personas
 	@ApiOperation("Muestra el listado de estudiantes")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Personas")
 	public List<Estudiante> getAllPersonas() {
 		return estudianteService.getAllEstudiantes();

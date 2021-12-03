@@ -32,25 +32,20 @@ public class TutorEmpresController {
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	 @CrossOrigin
+	 @CrossOrigin({"*"})
 	    @PostMapping("/asignar-tutorEmpresarial")
 	    ResponseEntity<GenericResponse<Object>> saveasignaciontutorEmpresarial(@RequestBody TutorEmpresarial tutor,
 	    		@RequestParam(value = "idempresa")Long idempresa) {
 	        return new ResponseEntity<GenericResponse<Object>>(tutorEService.createTutorEmpresarial(tutor, idempresa), HttpStatus.OK);
 	    }
-	 
+	 @CrossOrigin({"*"})
 	 @GetMapping("/getById-tutorempresarial")
 	    public TutorEmpresarial getBIdTutor(@RequestParam(value = "idtutoremp") Long idtutoremp) {
 	        return tutorEService.getById(idtutoremp);
 	    }
-//	 @GetMapping("/getByIdentificacion-tutorempresarial")
-//	    public TutorEmpresarial getByIdentificacion(@RequestParam(value = "identificacion") Long identificacion) {
-//	        return tutorEService.getById(identificacion);
-//	    }
 	 
-//Listar todas las personas
 	@ApiOperation("Muestra el listado de documentos asignados a cada tutor empresarial")
-	@CrossOrigin
+	 @CrossOrigin({"*"})
 	@GetMapping("/findAll-Documentos")
 	public List<TutorEmpresarial> getAllDocsTutoresEmpresariales() {
 		return tutorEService.getAllTutores();
