@@ -5,15 +5,14 @@
  */
 package com.ProyectoTDSBackend.controller;
 
-import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Convocatoria;
 import com.ProyectoTDSBackend.service.ConvocatoriaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 import java.util.Date;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,33 +36,48 @@ public class ConvocatoriaController {
     @Autowired
     ConvocatoriaService convocatoriaService;
 
-//Listar todas las empresas
-    @ApiOperation("Listado de las convocatorias")
+    @ApiOperation("Listado de las convocatorias activas")
     @CrossOrigin({"*"})
-    @GetMapping("/convocatorias")
-    public List<Convocatoria> getAllConvocatorias() {
-        return convocatoriaService.getlListaActividades();
+    @GetMapping("/get-ConvocatoriasDisponibles")
+    public List<Convocatoria> getAllConvocatoriasDisponibles() {
+        return convocatoriaService.getAllConvocatoriasDisponibles();
+    }
+    
+    @ApiOperation("Listado de las convocatorias inhabilitadas")
+    @CrossOrigin({"*"})
+    @GetMapping("/get-ConvocatoriasInhabilitadas")
+    public List<Convocatoria> getAllConvocatoriasInactivas() {
+        return convocatoriaService.getAllConvocatoriasInhabilitadas();
+    }
+    
+    @ApiOperation("Listado de las convocatorias por fecha de inicio")
+    @CrossOrigin({"*"})
+    @GetMapping("/get-ConvocatoriasByFecha")
+    public List<Convocatoria> getAllConvocatoriasByFechainicio(@RequestParam(value = "fechainicio", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechainicio) {
+        return convocatoriaService.getAllConvocatoriasByfechainicio(fechainicio);
+    }
+    
+    @ApiOperation("Listado de las convocatorias por fecha de finalizacion")
+    @CrossOrigin({"*"})
+    @GetMapping("/get-ConvocatoriasByFechafin")
+    public List<Convocatoria> getAllConvocatoriasByFechafin(@RequestParam(value = "fechafin", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechafin) {
+        return convocatoriaService.getAllConvocatoriasByfechafin(fechafin);
+    }
+    
+    @ApiOperation("Listado de las convocatorias por responsable de practicas")
+    @CrossOrigin({"*"})
+    @GetMapping("/get-ConvocatoriasByresponsableppp")
+    public List<Convocatoria> getAllConvocatoriasByresponsableppp(@RequestParam(value = "idresponsableppp", required = true) Long idresponsableppp) {
+        return convocatoriaService.getAllConvocatoriasByresponsablepp(idresponsableppp);
     }
 
     // 
     @ApiOperation("Crea las convocatorias")
     @CrossOrigin({"*"})
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody Convocatoria convocatoria1) {
-        if (StringUtils.isBlank(convocatoria1.getDescripcion_convocatoria())) {
-            return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
-        }
-        if (StringUtils.isBlank(convocatoria1.getFecha_inicio().toString())) {
-            return new ResponseEntity(new Mensaje("La fecha de inicio es obligatoria"), HttpStatus.BAD_REQUEST);
-        }
-        if (StringUtils.isBlank(convocatoria1.getFecha_inicio().toString())) {
-            return new ResponseEntity(new Mensaje("La fecha fin es obligatoria"), HttpStatus.BAD_REQUEST);
-        }
-        Convocatoria convocatoria = new Convocatoria(convocatoria1.getDescripcion_convocatoria(), convocatoria1.getFecha_inicio(), convocatoria1.getFecha_fin());
-        convocatoria.setEstado(1);
-        convocatoriaService.save(convocatoria);
+    public ResponseEntity<GenericResponse<Object>> createConvocatoria(@RequestBody Convocatoria convocatoria,Long idcarrera,Long idresponsableppp) {
 
-        return new ResponseEntity(new Mensaje("Convocatoria creada"), HttpStatus.OK);
+        return new ResponseEntity<GenericResponse<Object>>(convocatoriaService.saveConvocatoria(convocatoria, idcarrera, idresponsableppp), HttpStatus.OK);
     }
 
     @ApiOperation("Actualizar convocatoria")
@@ -71,22 +85,28 @@ public class ConvocatoriaController {
     @PostMapping("/actualizarConvocatoria")
     ResponseEntity<GenericResponse<Object>> putConvocatoria(
             @RequestParam(value = "idconvocatoria") Long idconvocatoria,
-            @RequestParam(value = "descripcion_convocatoria") String descripcion,
-            @RequestParam(value = "fecha_inicio") Date fecha_inicio,
-            @RequestParam(value = "fecha_fin") Date fecha_fin) {
+            @RequestParam(value = "documento") String documento,
+            @RequestParam(value = "fechainicio", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechainicio,
+            @RequestParam(value = "fechafin" , required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechafin) {
         return new ResponseEntity<GenericResponse<Object>>(
-                convocatoriaService.putActividad(idconvocatoria, descripcion, fecha_inicio, fecha_fin),
+                convocatoriaService.putActividad(idconvocatoria, documento, fechainicio, fechafin),
                 HttpStatus.OK);
     }
 
     @ApiOperation("Eliminado logico de convocatoria")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteConvocatoria/{idconvocatoria}")
-    public ResponseEntity<?> deleteConvocatoria(@RequestParam(value = "idconvocatoria") Long idconvocatoria) {
-        Convocatoria convocatoria = convocatoriaService.getOne(idconvocatoria).get();
-        convocatoria.setEstado(0);
-        convocatoriaService.save(convocatoria);
-        return new ResponseEntity(new Mensaje("Convocatoria eliminada"), HttpStatus.OK);
+    public ResponseEntity<GenericResponse<Object>> deleteConvocatoria(@RequestParam(value = "idconvocatoria") Long idconvocatoria) {
+        
+        return new ResponseEntity<GenericResponse<Object>>(convocatoriaService.deleteConvocatoria(idconvocatoria), HttpStatus.OK);
+    }
+    
+    @ApiOperation("Renovacion de convocatoria")
+    @CrossOrigin({"*"})
+    @PatchMapping("/RestoreConvocatoria/{idconvocatoria}")
+    public ResponseEntity<GenericResponse<Object>> RestaurarConvocatoria(@RequestParam(value = "idconvocatoria") Long idconvocatoria) {
+        
+        return new ResponseEntity<GenericResponse<Object>>(convocatoriaService.HabilitarConvocatoria(idconvocatoria), HttpStatus.OK);
     }
 
 }

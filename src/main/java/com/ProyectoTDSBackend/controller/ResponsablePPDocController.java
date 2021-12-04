@@ -31,10 +31,10 @@ public class ResponsablePPDocController {
 	@CrossOrigin({ "*" })
 	@PostMapping("/add-asignardocumentoaresponsable")
 	ResponseEntity<GenericResponse<Object>> saveResponsablePPp(@RequestBody ResponsablePPDocumento responsable,
-			@RequestParam(value = "iddocumento") Long iddocumento,
-			@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
+			@RequestParam(value = "iddocumento")Long iddocumento,
+			@RequestParam(value = "idresponsableppp")Long idresponsableppp) {
 		return new ResponseEntity<GenericResponse<Object>>(
-				responsableService.asignarDocumentoATutor(responsable, iddocumento, idresponsableppp), HttpStatus.OK);
+				responsableService.asignarDocumentoATutor(responsable,iddocumento,idresponsableppp), HttpStatus.OK);
 	}
 
 	@CrossOrigin({ "*" })
@@ -46,7 +46,7 @@ public class ResponsablePPDocController {
 	@CrossOrigin({ "*" })
 	@GetMapping("/getById-Responsable")
 	public List<ResponsablePPDocumento> getByIdResponsable(
-			@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
+			@RequestParam(value = "idresponsableppp")Long idresponsableppp) {
 		return responsableService.FindByResponsablePPP(idresponsableppp);
 	}
 

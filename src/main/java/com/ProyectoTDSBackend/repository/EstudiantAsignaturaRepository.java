@@ -13,5 +13,7 @@ public interface EstudiantAsignaturaRepository extends JpaRepository<EstudiantAs
 	
 	@Query(value = "select * from estudiant_asignatura e where e.idestudiante= :idestudiante order by e.idasignatura desc ", nativeQuery = true)
 	List<EstudiantAsignatura> findByidestudiante(Long idestudiante);
-
+	
+	@Query(value = "select * from estudiant_asignatura e where e.promedio= :promedio order by e.idasignatura desc ", nativeQuery = true)
+	List<EstudiantAsignatura> findBypromedio(double promedio);
 }
