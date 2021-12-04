@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ProyectoTDSBackend.models.Actividad;
 import com.ProyectoTDSBackend.models.TutorEmpresarial;
 import com.ProyectoTDSBackend.repository.EmpresaRepository;
 import com.ProyectoTDSBackend.repository.TutorEmpresarialRepository;
-import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.service.TutorEmpresarialService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;

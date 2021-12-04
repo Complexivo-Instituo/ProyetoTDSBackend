@@ -1,6 +1,5 @@
 package com.ProyectoTDSBackend.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.ProyectoTDSBackend.models.Vinculacion;

@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.ResponsablePPDocumento;
-import com.ProyectoTDSBackend.models.ResponsablePPP;
 import com.ProyectoTDSBackend.service.ResponsablePPDocService;
-import com.ProyectoTDSBackend.service.ResponsablePPService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 @RestController

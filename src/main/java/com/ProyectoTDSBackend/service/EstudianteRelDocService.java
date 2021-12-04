@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.ProyectoTDSBackend.models.EstudianteRelDoc;
-import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 public interface EstudianteRelDocService {

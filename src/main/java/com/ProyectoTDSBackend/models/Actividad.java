@@ -5,12 +5,18 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
@@ -67,5 +73,32 @@ public class Actividad {
     public void setCronograma(String cronograma) {
         this.cronograma = cronograma;
     }
+
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public ResponsablePPP getResponsableppp() {
+		return responsableppp;
+	}
+
+	public void setResponsableppp(ResponsablePPP responsableppp) {
+		this.responsableppp = responsableppp;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idempresa")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	 private Empresa empresa;
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idresponsableppp")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	 private ResponsablePPP responsableppp;
 
 }

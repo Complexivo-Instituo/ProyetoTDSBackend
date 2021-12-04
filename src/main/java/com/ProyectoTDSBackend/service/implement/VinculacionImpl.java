@@ -13,7 +13,6 @@ import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.service.VinculacionService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
-import com.ProyectoTDSBackend.security.models.Persona;
 
 @Service
 public class VinculacionImpl implements VinculacionService {

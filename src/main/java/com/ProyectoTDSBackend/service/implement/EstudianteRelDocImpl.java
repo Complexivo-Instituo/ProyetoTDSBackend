@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ProyectoTDSBackend.models.Convenio;
 import com.ProyectoTDSBackend.models.EstudianteRelDoc;
 import com.ProyectoTDSBackend.repository.DocumentoRepository;
 import com.ProyectoTDSBackend.repository.EstadoRepository;

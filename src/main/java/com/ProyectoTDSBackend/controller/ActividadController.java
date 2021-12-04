@@ -38,33 +38,34 @@ public class ActividadController {
     @Autowired
     ActividadService actividadService;
 
-//Listar todas las empresas
-    @ApiOperation("Listado de las actividades")
+//Listar todas las actividades
+    @ApiOperation("Lista a todas las actividades")
     @CrossOrigin({"*"})
-    @GetMapping("/actividades")
+    @GetMapping("/get-allactividades")
     public List<Actividad> getActividades() {
         return actividadService.getlListaActividades();
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody Actividad actividad1) {
-        if (StringUtils.isBlank(actividad1.getHorario())) {
-            return new ResponseEntity(new Mensaje("El horario es obligatorio"), HttpStatus.BAD_REQUEST);
-        }
-        if (StringUtils.isBlank(actividad1.getCronograma())) {
-            return new ResponseEntity(new Mensaje("El cronograma es obligatorio"), HttpStatus.BAD_REQUEST);
-        }
-        Actividad actividad = new Actividad(actividad1.getCronograma(), actividad1.getHorario());
-        actividadService.save(actividad);
+//   @ApiOperation("Listado de las actividades")
+    @CrossOrigin({"*"})
+    @PostMapping("/createActividad")
+    public ResponseEntity<GenericResponse<Object>>  createActividad(@RequestBody Actividad actividad,@RequestParam("idempresa")Long idempresa,@RequestParam("idresponsableppp")Long idresponsableppp) {
+//        if (StringUtils.isBlank(actividad1.getHorario())) {
+//            return new ResponseEntity(new Mensaje("El horario es obligatorio"), HttpStatus.BAD_REQUEST);
+//        }
+//        if (StringUtils.isBlank(actividad1.getCronograma())) {
+//            return new ResponseEntity(new Mensaje("El cronograma es obligatorio"), HttpStatus.BAD_REQUEST);
+//        }
+//        Actividad actividad = new Actividad(actividad1.getCronograma(), actividad1.getHorario());
+       
 
-        return new ResponseEntity(new Mensaje("Actividad creada"), HttpStatus.OK);
+        return new ResponseEntity<GenericResponse<Object>>(actividadService.saveActividad(actividad, idempresa, idresponsableppp), HttpStatus.OK);
     }
 
     @ApiOperation("Actualizar campos de la actividad")
-    @CrossOrigin
+    @CrossOrigin({"*"})
     @PostMapping("/put-Actividad")
-    ResponseEntity<GenericResponse<Object>> putEmpresa(
+    ResponseEntity<GenericResponse<Object>> putActividad(
             @RequestParam(value = "idactividad") Long idactividad,
             @RequestParam(value = "horario") String horario,
             @RequestParam(value = "cronograma") String cronograma)
