@@ -28,7 +28,7 @@ public class ResponsablePPPImpl implements ResponsablePPService{
 	public GenericResponse<Object> createResponsablePPP(ResponsablePPP responsable, Long idcarrera, int idpersona) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		try {
-			if (responsableRepository.findById(responsable.getIdresponsableppp()) != null) {
+			if (responsableRepository.findById(responsable.getIdresponsableppp()).isEmpty() == true) {
 				if (carreraRepository.findById(idcarrera).isEmpty() == false) {
 					if (personaRepository.findById(idpersona).isEmpty() == false) {
 						if (personaRepository.findByIdentificacion(responsable.getPersona().getIdentificacion()) != null) {

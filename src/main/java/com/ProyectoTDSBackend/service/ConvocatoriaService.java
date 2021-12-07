@@ -83,11 +83,13 @@ public class ConvocatoriaService {
         return convocatoriaRepository.existsById(id);
     }
 
-    public GenericResponse<Object> putActividad(Long idconvocatoria, String documento, Date fecha_inicio, Date fecha_fin) {
+    public GenericResponse<Object> putActividad(Long idconvocatoria, String documento,String requisitos, String actividades, Date fecha_inicio, Date fecha_fin) {
         GenericResponse<Object> response = new GenericResponse<>();
         Convocatoria convocatoria = convocatoriaRepository.findById(idconvocatoria).get();
         if (convocatoria.getIdconvocatoria() != null) {
             convocatoria.setDocumento(documento.toUpperCase());
+            convocatoria.setRequisitos(requisitos.toUpperCase());
+            convocatoria.setActividades(actividades.toUpperCase());
             convocatoria.setFechainicio(fecha_inicio);
             convocatoria.setFechafin(fecha_fin);
             convocatoriaRepository.save(convocatoria);

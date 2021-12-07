@@ -37,6 +37,12 @@ public class Convocatoria {
 
 	@Column(name = "documento", nullable = false)
 	private String documento;
+	
+	@Column(name = "requisitos", nullable = false)
+	private String requisitos;
+	
+	@Column(name = "actividades", nullable = false)
+	private String actividades;
 
 	@Column(name = "fechainicio", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -98,6 +104,22 @@ public class Convocatoria {
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public String getRequisitos() {
+		return requisitos;
+	}
+
+	public void setRequisitos(String requisitos) {
+		this.requisitos = requisitos;
+	}
+
+	public String getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(String actividades) {
+		this.actividades = actividades;
 	}
 
 	public int getEstado() {

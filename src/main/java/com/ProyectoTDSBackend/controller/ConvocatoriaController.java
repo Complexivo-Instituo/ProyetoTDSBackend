@@ -86,10 +86,12 @@ public class ConvocatoriaController {
     ResponseEntity<GenericResponse<Object>> putConvocatoria(
             @RequestParam(value = "idconvocatoria") Long idconvocatoria,
             @RequestParam(value = "documento") String documento,
+            @RequestParam(value = "requisitos") String requisitos,
+            @RequestParam(value = "actividades") String actividades,
             @RequestParam(value = "fechainicio", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechainicio,
             @RequestParam(value = "fechafin" , required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechafin) {
         return new ResponseEntity<GenericResponse<Object>>(
-                convocatoriaService.putActividad(idconvocatoria, documento, fechainicio, fechafin),
+                convocatoriaService.putActividad(idconvocatoria, documento,requisitos,actividades, fechainicio, fechafin),
                 HttpStatus.OK);
     }
 
