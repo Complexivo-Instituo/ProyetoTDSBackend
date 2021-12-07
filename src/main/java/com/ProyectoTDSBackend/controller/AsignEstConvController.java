@@ -68,7 +68,7 @@ public class AsignEstConvController {
 //        
 //        return new ResponseEntity<GenericResponse<Object>>(asignacionService.deleteasignacion(idasigestudconvocatoria), HttpStatus.OK);
 //    }
-    @ApiOperation("Eliminado fisico de la asignacion")
+    @ApiOperation("Eliminado fisico de la asignación")
     @CrossOrigin({"*"})
     @DeleteMapping("/deleteasignacion/{idasigestudconvocatoria}")
     public ResponseEntity<GenericResponse<Object>> deleteasignacion(@RequestParam(value = "idasigestudconvocatoria") Long idasigestudconvocatoria) {
