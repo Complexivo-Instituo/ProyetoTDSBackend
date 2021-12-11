@@ -99,6 +99,13 @@
             <version>5.3.6</version>
             <type>jar</type>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+		<dependency>
+		    <groupId>net.sf.jasperreports</groupId>
+		    <artifactId>jasperreports</artifactId>
+		    <version>6.17.0</version>
+		</dependency>
     </dependencies>
 
     <build>
