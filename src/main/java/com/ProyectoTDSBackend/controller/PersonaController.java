@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Carrera;
+import com.ProyectoTDSBackend.security.enums.RolNombre;
 import com.ProyectoTDSBackend.security.models.Persona;
 import com.ProyectoTDSBackend.service.PersonaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -27,21 +28,33 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin({ "*" })
 public class PersonaController {
 
-	
 	@Autowired
 	PersonaService personaService;
-	
-	 @CrossOrigin({"*"})
-	 @GetMapping("/getById-Persona")
-	    public Persona getByIPersona(@RequestParam(value = "idpersona") int idpersona) {
-	        return personaService.getById(idpersona);
-	    }
+
+	@CrossOrigin({ "*" })
+	@GetMapping("/getById-Persona")
+	public Persona getByIPersona(@RequestParam(value = "idpersona") int idpersona) {
+		return personaService.getById(idpersona);
+	}
+
 //Listar todas las personas
 	@ApiOperation("Muestra el listado de personas")
-	 @CrossOrigin({"*"})
+	@CrossOrigin({ "*" })
 	@GetMapping("/findAll-Personas")
 	public List<Persona> getAllPersonas() {
 		return personaService.getAllPersonas();
 	}
+	
+    /**
+     * CONSTRUCCION DEL METODO PUT PARA ACTUALIZAR DATOS DE VINCULACIÓN
+     */
+ @CrossOrigin({"*"})
+    @PostMapping("/put-persona")
+    ResponseEntity<GenericResponse<Object>> putArrendatario(
+    		 @RequestParam(value = "idpersona") int idpersona,
+    		@RequestParam(value = "rol") RolNombre rol
+    ) {
+        return new ResponseEntity<GenericResponse<Object>>(personaService.putPermisos(idpersona, rol), HttpStatus.OK);
+    }
 
 }

@@ -48,6 +48,7 @@ public class Persona {
     
     @NotNull
     private int contacto;
+ 
     
     @NotNull
     @Email
@@ -67,6 +68,7 @@ public class Persona {
     @JoinTable(name = "persona_rol", joinColumns = @JoinColumn(name = "id_persona"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
+   
 
     public Persona() {
     }
@@ -180,7 +182,8 @@ public class Persona {
 	public void setContacto(int contacto) {
 		this.contacto = contacto;
 	}
-    
+
+
 
    
 }
