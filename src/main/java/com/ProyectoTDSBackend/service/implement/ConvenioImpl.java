@@ -37,7 +37,7 @@ public class ConvenioImpl implements ConvenioService {
 		GenericResponse<Object> response = new GenericResponse<>();
 
 		try {
-			if (convenioRepository.findById(idconvenio).isEmpty() == false) {
+//			if (convenioRepository.findById(idconvenio).isEmpty() == false) {
 				Convenio convenio = convenioRepository.findById(idconvenio).get();
 				if (coordinadorRepository.findById(idcoordinador).isEmpty() == true) {
 					response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
@@ -55,11 +55,11 @@ public class ConvenioImpl implements ConvenioService {
 					response.setObject("Coordinador Editado");
 					response.setStatus(ParametersApp.SUCCESSFUL.value());
 				}
-			} else {
-				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-				response.setObject("Convenio no encontrado");
-				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-			}
+//			} else {
+//				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//				response.setObject("Convenio no encontrado");
+//				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 			response.setObject("ERROR " + e);

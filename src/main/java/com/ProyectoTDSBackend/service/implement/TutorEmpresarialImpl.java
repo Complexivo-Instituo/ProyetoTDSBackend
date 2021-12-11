@@ -25,7 +25,7 @@ public class TutorEmpresarialImpl implements TutorEmpresarialService {
 	public GenericResponse<Object> createTutorEmpresarial(TutorEmpresarial tutor, Long idempresa) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		try {
-			if (tutorRepository.findById(tutor.getIdtutoremp()) != null) {
+//			if (tutorRepository.findById(tutor.getIdtutoremp()) != null) {
 				if (empresaRepository.findById(idempresa).isEmpty() == false) {
 					
 					tutor.setEmpresa(empresaRepository.findById(idempresa).get());
@@ -43,11 +43,11 @@ public class TutorEmpresarialImpl implements TutorEmpresarialService {
 					response.setObject("Tutor empresarial creado");
 					response.setStatus(ParametersApp.SUCCESSFUL.value());
 				}
-			} else {
-				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-                response.setObject("El Tutor ya existe");
-                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-			}
+//			} else {
+//				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//                response.setObject("El Tutor ya existe");
+//                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 			response.setObject("Error: " + e);

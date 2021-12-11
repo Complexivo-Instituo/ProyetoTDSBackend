@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.TutorEmpresarial;
 import com.ProyectoTDSBackend.service.TutorEmpresarialService;
+import com.ProyectoTDSBackend.service.implement.TutorEmpresarialImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class TutorEmpresController {
 	
 	
 	@Autowired
-	TutorEmpresarialService tutorEService;
+	TutorEmpresarialImpl tutorEService;
 	
 	
 	 /**
@@ -44,9 +45,9 @@ public class TutorEmpresController {
 	        return tutorEService.getById(idtutoremp);
 	    }
 	 
-	@ApiOperation("Muestra el listado de documentos asignados a cada tutor empresarial")
+	@ApiOperation("Muestra el listado de empresas con los  tutor empresariales asignados")
 	 @CrossOrigin({"*"})
-	@GetMapping("/findAll-Documentos")
+	@GetMapping("/findAll-Tutores")
 	public List<TutorEmpresarial> getAllDocsTutoresEmpresariales() {
 		return tutorEService.getAllTutores();
 	}
