@@ -61,13 +61,19 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Campos mal ingresados o email no valido."), HttpStatus.BAD_REQUEST);
         }
         if (usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El nombre del usuario ya esta en uso."), HttpStatus.BAD_REQUEST);
         }
         if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
-            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El email ya existe."), HttpStatus.BAD_REQUEST);
+        }
+        if (usuarioService.existsByIdentificacion(nuevoUsuario.getIdentificacion())) {
+            return new ResponseEntity(new Mensaje("Numero de cedula ya esta registrado."), HttpStatus.BAD_REQUEST);
+        }
+        if (usuarioService.existsByContacto(nuevoUsuario.getContacto())) {
+            return new ResponseEntity(new Mensaje("Numero de contacto ya esta registrado."), HttpStatus.BAD_REQUEST);
         }
         Persona usuario
                 = new Persona(nuevoUsuario.getIdentificacion(), nuevoUsuario.getPrimernombre(), nuevoUsuario.getSegundonombre(), nuevoUsuario.getPrimerapellido(), nuevoUsuario.getSegundoapellido(), nuevoUsuario.getContacto(),
@@ -81,7 +87,7 @@ public class AuthController {
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
+        return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.OK);
     }
 
     @PostMapping("/login")
