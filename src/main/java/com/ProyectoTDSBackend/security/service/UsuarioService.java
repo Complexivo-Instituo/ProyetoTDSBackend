@@ -35,6 +35,15 @@ public class UsuarioService {
         return usuarioRepository.existsByEmail(email);
     }
 
+    public boolean existsByIdentificacion(String identificacion) {
+        return usuarioRepository.existsByIdentificacion(identificacion);
+    }
+    
+    public boolean existsByContacto(int contacto) {
+        return usuarioRepository.existsByContacto(contacto);
+    }
+    
+    
     public void save(Persona usuario) {
         usuarioRepository.save(usuario);
     }
