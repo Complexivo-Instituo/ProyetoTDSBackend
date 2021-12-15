@@ -65,8 +65,8 @@ public class AsignaturaController {
         return new ResponseEntity<GenericResponse<Object>>(asignaturaService.putAsignatura(idasignatura, nombreasignatura, fechacreacion, idcarrera), HttpStatus.OK);
     }
 	 @CrossOrigin({"*"})
-    @GetMapping("/getById-estudiantes")
-    public Optional<Asignatura> getByIPersona(@RequestParam(value = "idasignatura") Long idasignatura) {
+    @GetMapping("/getById-Asignatura")
+    public Optional<Asignatura> getByIdAsignatura(@RequestParam(value = "idasignatura") Long idasignatura) {
         return asignaturaService.getOne(idasignatura);
     }
 

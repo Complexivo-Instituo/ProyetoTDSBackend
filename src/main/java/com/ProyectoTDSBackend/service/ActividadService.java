@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +56,7 @@ public class ActividadService {
 			actividad.setResponsableppp(responsableRepository.findById(idresponsableppp).get());
 			actividadRepository.save(actividad);
 			response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-			response.setObject("La asignatura se ha creado");
+			response.setObject("La actividad se ha creado");
 			response.setStatus(ParametersApp.SUCCESSFUL.value());
 		}
 
@@ -70,12 +71,13 @@ public class ActividadService {
 		return actividadRepository.existsById(id);
 	}
 
-	public GenericResponse<Object> putActividad(Long idactividad, String horario, String cronograma) {
+	public GenericResponse<Object> putActividad(Long idactividad,String descripcionactividades, Date horario, Date cronograma) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		Actividad actividad = actividadRepository.findById(idactividad).get();
 		if (actividad.getIdactividad() != null) {
-			actividad.setHorario(horario.toUpperCase());
-			actividad.setCronograma(cronograma.toUpperCase());
+			actividad.setDescripcionactividades(descripcionactividades);
+			actividad.setHorario(horario);
+			actividad.setCronograma(cronograma);
 			actividadRepository.save(actividad);
 			response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 			response.setObject("Actualizado correctamente");

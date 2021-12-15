@@ -5,6 +5,8 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,66 +34,102 @@ public class Actividad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idactividad", nullable = false)
     private Long idactividad;
+    @Column(name = "descripcionactividades", nullable = false)
+    private String descripcionactividades;
 
     @Column(name = "horario", nullable = false)
-    private String horario;
+	@Temporal(TemporalType.TIMESTAMP)
+    private Date horario;
 
     @Column(name = "cronograma", nullable = false)
-    private String cronograma;
+   	@Temporal(TemporalType.TIMESTAMP)
+    private Date cronograma;
 
     public Actividad() {
     }
 
-    public Actividad(Long idactividad, String horario, String cronograma) {
-        this.idactividad = idactividad;
-        this.horario = horario;
-        this.cronograma = cronograma;
-    }
 
-    public Actividad(String cronograma, String horario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public Long getIdactividad() {
-        return idactividad;
-    }
+	public Actividad(String descripcionactividades, Date horario, Date cronograma) {
+		super();
+		this.descripcionactividades = descripcionactividades;
+		this.horario = horario;
+		this.cronograma = cronograma;
+	}
 
-    public void setIdactividad(Long idactividad) {
-        this.idactividad = idactividad;
-    }
 
-    public String getHorario() {
-        return horario;
-    }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
+	public Long getIdactividad() {
+		return idactividad;
+	}
 
-    public String getCronograma() {
-        return cronograma;
-    }
 
-    public void setCronograma(String cronograma) {
-        this.cronograma = cronograma;
-    }
+
+	public void setIdactividad(Long idactividad) {
+		this.idactividad = idactividad;
+	}
+
+
+
+	public String getDescripcionactividades() {
+		return descripcionactividades;
+	}
+
+
+
+	public void setDescripcionactividades(String descripcionactividades) {
+		this.descripcionactividades = descripcionactividades;
+	}
+
+
+
+	public Date getHorario() {
+		return horario;
+	}
+
+
+
+	public void setHorario(Date horario) {
+		this.horario = horario;
+	}
+
+
+
+	public Date getCronograma() {
+		return cronograma;
+	}
+
+
+
+	public void setCronograma(Date cronograma) {
+		this.cronograma = cronograma;
+	}
+
 
 
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
+
+
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+
+
 
 	public ResponsablePPP getResponsableppp() {
 		return responsableppp;
 	}
 
+
+
 	public void setResponsableppp(ResponsablePPP responsableppp) {
 		this.responsableppp = responsableppp;
 	}
+
+
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idempresa")

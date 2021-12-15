@@ -9,8 +9,11 @@ import com.ProyectoTDSBackend.models.Actividad;
 import com.ProyectoTDSBackend.service.ActividadService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
+
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -53,11 +56,12 @@ public class ActividadController {
     @PostMapping("/put-Actividad")
     ResponseEntity<GenericResponse<Object>> putActividad(
             @RequestParam(value = "idactividad") Long idactividad,
-            @RequestParam(value = "horario") String horario,
-            @RequestParam(value = "cronograma") String cronograma)
+            @RequestParam(value = "descripcionactividades") String descripcionactividades,
+            @RequestParam(value = "horario", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date horario,
+            @RequestParam(value = "cronograma", required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") Date cronograma)
        {
         return new ResponseEntity<GenericResponse<Object>>(
-                actividadService.putActividad(idactividad, horario, cronograma),
+                actividadService.putActividad(idactividad,descripcionactividades ,horario, cronograma),
                 HttpStatus.OK);
     }
 }

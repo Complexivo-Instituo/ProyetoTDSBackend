@@ -31,7 +31,7 @@ public class EstadoController {
 	
 	@ApiOperation("Extraer por descripción de estado")
 	 @CrossOrigin({"*"})
-	@GetMapping("/empresa/{descripcion}")
+	@GetMapping("/{descripcion}")
 	public ResponseEntity<Estado> getByDescripcion(@PathVariable("descripcion") String descripcion) {
 
 		if (!estadoService.existsBydescripcion(descripcion)) {
