@@ -20,25 +20,23 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ConvocatoriaRepository extends JpaRepository<Convocatoria, Long> {
-	
-	
-	@Query(value = "select * from convocatoria c where c.fechainicio =:fechainicio order by c.idconvocatoria desc ", nativeQuery = true)
-    List<Convocatoria> findByfechainicio(Date fechainicio);
-	
-	@Query(value = "select * from convocatoria c where c.fechafin =:fechafin order by c.idconvocatoria desc ", nativeQuery = true)
-    List<Convocatoria> findByfechafin(Date fechafin);
-	
-	@Query(value = "select * from convocatoria c where c.idcarrera =:idcarrera order by c.idconvocatoria desc ", nativeQuery = true)
-    List<Convocatoria> findByidcarrera(Long idcarrera);
-	
-	@Query(value = "select * from convocatoria c where c.idresponsableppp =:idresponsableppp order by c.idconvocatoria desc ", nativeQuery = true)
-    List<Convocatoria> findByidresponsableppp(Long idresponsableppp);
-	
-	@Query(value = "select * from convocatoria c where c.estado = 1 order by c.idconvocatoria desc ", nativeQuery = true)
-	List<Convocatoria> findAllConvocatoriasActivas();
-	
-	@Query(value = "select * from convocatoria c where c.estado = 0 order by c.idconvocatoria desc ", nativeQuery = true)
-	List <Convocatoria> findAllConvocatoriasInactivas();
 
-    
+    @Query(value = "select * from convocatoria c where c.fechainicio =:fechainicio order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findByfechainicio(Date fechainicio);
+
+    @Query(value = "select * from convocatoria c where c.fechafin =:fechafin order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findByfechafin(Date fechafin);
+
+    @Query(value = "select * from convocatoria c where c.idcarrera =:idcarrera order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findByidcarrera(Long idcarrera);
+
+    @Query(value = "select * from convocatoria c where c.idresponsableppp =:idresponsableppp order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findByidresponsableppp(Long idresponsableppp);
+
+    @Query(value = "select * from convocatoria c where c.estado = 1 order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findAllConvocatoriasActivas();
+
+    @Query(value = "select * from convocatoria c where c.estado = 0 order by c.idconvocatoria desc ", nativeQuery = true)
+    List<Convocatoria> findAllConvocatoriasInactivas();
+
 }

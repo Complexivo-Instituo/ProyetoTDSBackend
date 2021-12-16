@@ -36,6 +36,7 @@ public class ConvocatoriaService {
     public List<Convocatoria> getAllConvocatorias() {
         return convocatoriaRepository.findAll();
     }
+    
     public List<Convocatoria> getAllConvocatoriasDisponibles() {
         return convocatoriaRepository.findAllConvocatoriasActivas();
     }
