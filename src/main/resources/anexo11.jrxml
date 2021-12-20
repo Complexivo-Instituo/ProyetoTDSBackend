@@ -322,6 +322,7 @@ Diálogo y observación con los estudiantes sobre las actividades realizadas en 
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="26" y="390" width="474" height="22" uuid="f66084b8-3d38-4bac-bffa-c17630732e6c"/>
@@ -331,6 +332,7 @@ Diálogo y observación con los estudiantes sobre las actividades realizadas en 
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="26" y="440" width="158" height="45" uuid="303cb884-c785-4cb6-9b96-324681aff57a"/>

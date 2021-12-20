@@ -35,8 +35,8 @@ public class SeguimientoController {
      * CONSTRUCCION DEL METODO PARA GENERAR EL REGISTRO DE SEGUIMIENTO
      */
 	@GetMapping(value="anexo10", produces= MediaType.APPLICATION_PDF_VALUE)
-	public @ResponseBody ResponseEntity<Object> getReportJasper(@RequestParam(name = "persona") Integer personaId){
-		byte[] media = seguimientoService.getJasperReport(1);
+	public @ResponseBody ResponseEntity<Object> getReportJasper(@RequestParam(name = "persona") Integer personaId, String actividades){
+		byte[] media = seguimientoService.getJasperReport(personaId, actividades);
 		return ResponseEntity.ok(media);
 	}
 	 

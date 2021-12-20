@@ -17,7 +17,7 @@ public class SeguimientoService {
 	@Autowired
 	SeguimientoEntityMethod seguimientoEntityMethod;
 	
-	public byte[] getJasperReport(Integer personaId) {
-		return seguimientoEntityMethod.getJasperReport(personaId);
+	public byte[] getJasperReport(Integer personaId, String actividades) {
+		return seguimientoEntityMethod.getJasperReport(personaId, actividades);
 	}
 }

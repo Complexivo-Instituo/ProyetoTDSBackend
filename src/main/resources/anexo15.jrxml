@@ -18,7 +18,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="140" splitType="Stretch">
+		<band height="150" splitType="Stretch">
 			<textField>
 				<reportElement x="330" y="14" width="214" height="16" uuid="6cdf6be4-a9c1-47e1-b3d6-1df3fa14bf79"/>
 				<textFieldExpression><![CDATA["Cuenca, …… de …………………. del …………………"]]></textFieldExpression>
@@ -46,16 +46,6 @@ Su Despacho ]]></text>
 				<textFieldExpression><![CDATA["Tutor Académico:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="15" y="120" width="100" height="20" uuid="774dffd8-aa70-4422-840a-6987cfa42d4b"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA["Estudiante:"]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="115" y="100" width="100" height="20" uuid="f7966235-1180-40bb-a0cf-b50189eb9730"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -63,7 +53,7 @@ Su Despacho ]]></text>
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textFieldExpression><![CDATA["Angel"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["100/100"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="115" y="120" width="100" height="20" uuid="ca4581f4-7cd8-4369-9226-7d75e03cde99"/>
@@ -73,7 +63,7 @@ Su Despacho ]]></text>
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textFieldExpression><![CDATA["Carlos"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["90/100"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="215" y="100" width="100" height="20" uuid="96de0224-5a9a-440d-b000-cf1922a94444"/>
@@ -83,7 +73,7 @@ Su Despacho ]]></text>
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textFieldExpression><![CDATA["Tutor Empresarial:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["40%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="215" y="120" width="100" height="20" uuid="4172606b-f287-4259-904d-4f87d1db8b4f"/>
@@ -93,7 +83,7 @@ Su Despacho ]]></text>
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textFieldExpression><![CDATA["Ciclo:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["60%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="315" y="100" width="100" height="20" uuid="e4d7f9ee-244a-4005-b4e8-741c41656229"/>
@@ -175,7 +165,7 @@ Su Despacho ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="-10" width="544" height="75" uuid="70a9f569-f4d5-4757-a0f3-5ecc69b708db"/>
-				<text><![CDATA[Luego de expresarle un atento saludo, me permito informarle que el ___________________, estudiante de Quinto ciclo de la carrera de Desarrollo De Software ha realizado 240 horas de prácticas pre profesionales en el/los período/s académico/s ______________ realizadas en la empresa Gerardo Ortiz e Hijos obteniendo las siguientes calificaciones:]]></text>
+				<text><![CDATA[Luego de expresarle un atento saludo, me permito informarle que ___________________, estudiante de Quinto ciclo de la carrera de Desarrollo De Software ha realizado 240 horas de prácticas pre profesionales en el/los período/s académico/s ______________ realizadas en la empresa Gerardo Ortiz e Hijos obteniendo las siguientes calificaciones:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="200" width="535" height="70" uuid="883392a1-50fc-4252-be9e-75f3b1a4576d"/>
@@ -183,6 +173,24 @@ Su Despacho ]]></text>
 Para constancia, se adjunta todos los documentos respectivos para que sean anexados al expediente del estudiante.
 Quedo atenta a cualquier inquietud.]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="15" y="120" width="100" height="20" uuid="7cb40407-74ee-4f9f-95b4-fd97d717b92f"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA["Tutor Empresarial:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="-10" width="100" height="20" uuid="6c3bdb54-d181-44c6-b965-7eb5b98a52db"/>
+				<textFieldExpression><![CDATA["Franklin Merchan"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="18" width="100" height="18" uuid="16294166-ec5a-4253-8899-615300a68201"/>
+				<textFieldExpression><![CDATA[2021]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>

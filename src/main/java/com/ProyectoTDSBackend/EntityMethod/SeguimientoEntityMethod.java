@@ -26,13 +26,14 @@ public class SeguimientoEntityMethod {
 	@Autowired
 	DataSource dataSource;
 	
-	public byte[] getJasperReport(Integer personaId) {
+	public byte[] getJasperReport(Integer personaId, String actividades) {
 		try{
 			File file = ResourceUtils.getFile("classpath:anexo10.jrxml");
 			JasperReport jr = JasperCompileManager.compileReport(file.getAbsolutePath());
 			
 			Map<String, Object> parameters = new LinkedHashMap<>();
 			parameters.put("PERSONA_ID", personaId);
+			parameters.put("ACTIVIDADES", actividades);
 			
 			JasperPrint jp = JasperFillManager.fillReport(jr, parameters, new JREmptyDataSource(1));//, DataSourceUtils.getConnection(dataSource));
 			return JasperExportManager.exportReportToPdf(jp);
