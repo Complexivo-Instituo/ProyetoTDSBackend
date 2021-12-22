@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,21 @@ public class TutorEmpresController {
 	@GetMapping("/findAll-Tutores")
 	public List<TutorEmpresarial> getAllDocsTutoresEmpresariales() {
 		return tutorEService.getAllTutores();
+	}
+	
+	
+	@ApiOperation("Actualizar campos de tutor emoresarial")
+	 @CrossOrigin({"*"})
+	@PutMapping("/put-TutorEmpresarial")
+	ResponseEntity<GenericResponse<Object>> putTutor(@RequestParam(value = "idempresa") Long idempresa,
+			@RequestParam(value = "idtutoremp") Long idtutoremp,
+			@RequestParam(value = "nombretutor") String nombretutor,
+			@RequestParam(value = "identificacion") String identificacion,
+			@RequestParam(value = "contacto") String contacto
+			) {
+		return new ResponseEntity<GenericResponse<Object>>(
+				tutorEService.putTutorEmpresarial(nombretutor, identificacion, contacto, idempresa, idtutoremp),
+				HttpStatus.OK);
 	}
 
 
