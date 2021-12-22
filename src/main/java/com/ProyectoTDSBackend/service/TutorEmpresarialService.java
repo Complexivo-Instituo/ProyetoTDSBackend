@@ -9,7 +9,7 @@ public interface TutorEmpresarialService {
 	
 	GenericResponse<Object> createTutorEmpresarial(TutorEmpresarial tutor,Long idempresa);
 	
-	GenericResponse<Object> putTutorEmpresarial(String nombretutor, String identificacion, String contacto,Long idempresa,Long idtutoremp);
+	GenericResponse<Object> putTutorEmpresarial(String nombretutor, String identificacion, String contacto,Long idtutoremp);
 	
 	  List<TutorEmpresarial> getAllTutores();
 

@@ -57,14 +57,14 @@ public class TutorEmpresController {
 	@ApiOperation("Actualizar campos de tutor emoresarial")
 	 @CrossOrigin({"*"})
 	@PutMapping("/put-TutorEmpresarial")
-	ResponseEntity<GenericResponse<Object>> putTutor(@RequestParam(value = "idempresa") Long idempresa,
+	ResponseEntity<GenericResponse<Object>> putTutor(
 			@RequestParam(value = "idtutoremp") Long idtutoremp,
 			@RequestParam(value = "nombretutor") String nombretutor,
 			@RequestParam(value = "identificacion") String identificacion,
 			@RequestParam(value = "contacto") String contacto
 			) {
 		return new ResponseEntity<GenericResponse<Object>>(
-				tutorEService.putTutorEmpresarial(nombretutor, identificacion, contacto, idempresa, idtutoremp),
+				tutorEService.putTutorEmpresarial(nombretutor, identificacion, contacto, idtutoremp),
 				HttpStatus.OK);
 	}
 
