@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.TutorEmpDocument;
 import com.ProyectoTDSBackend.service.TutorEmpDocService;
+import com.ProyectoTDSBackend.service.implement.TutorEmpDocImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class TutorEmpDocController {
 
 	
 	@Autowired
-	TutorEmpDocService tutdocService;
+	TutorEmpDocImpl tutdocService;
 	
 	
 	 /**
