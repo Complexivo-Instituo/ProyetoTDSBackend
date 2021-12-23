@@ -33,7 +33,7 @@ public class ResponsablePPDocService {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
 //	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())!= null){
-	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento()).isEmpty()== true) {
+//	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setResponsableppp(responsableRepository.findByidresponsableppp(idresponsableppp));
 	                    tutordoc.setFechaasignacion(tutordoc.getFechaasignacion());
@@ -41,11 +41,11 @@ public class ResponsablePPDocService {
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 		                response.setObject("Se ha asignado documento ha:"+tutordoc.getResponsableppp().getPersona().getPrimernombre()+" creado exitosamente");
 		                response.setStatus(ParametersApp.SUCCESSFUL.value());
-		            } else {
-		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-		                response.setObject("No se ha podido asignar este documento está duplicado");
-		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-		            }
+//		            } else {
+//		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//		                response.setObject("No se ha podido asignar este documento está duplicado");
+//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//		            }
 //	            	}else {
 //	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 //		                response.setObject("Error al procesar informacion");
