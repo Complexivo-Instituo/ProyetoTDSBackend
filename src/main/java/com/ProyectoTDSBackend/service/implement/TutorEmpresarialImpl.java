@@ -57,7 +57,7 @@ public class TutorEmpresarialImpl implements TutorEmpresarialService {
 	}
 
 	@Override
-	public GenericResponse<Object> putTutorEmpresarial(String nombretutor, String identificacion, String contacto, Long idempresa,Long idtutoremp) {
+	public GenericResponse<Object> putTutorEmpresarial(String nombretutor, String identificacion, String contacto,Long idtutoremp) {
 		 GenericResponse<Object> response = new GenericResponse<>();
 	        TutorEmpresarial tutor = tutorRepository.findById(idtutoremp).get();
 	        if ((tutor.getIdtutoremp()) != null) {

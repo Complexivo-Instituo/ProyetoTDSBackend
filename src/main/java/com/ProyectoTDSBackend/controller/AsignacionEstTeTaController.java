@@ -23,7 +23,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/Asignación a estudiante")
+@RequestMapping("/Asignacionestudiante")
 @CrossOrigin({"*"})
 public class AsignacionEstTeTaController {
 

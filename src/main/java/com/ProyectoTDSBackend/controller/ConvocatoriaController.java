@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.controller;
 
+import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Convocatoria;
 import com.ProyectoTDSBackend.service.ConvocatoriaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -18,11 +19,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  *
@@ -111,4 +114,17 @@ public class ConvocatoriaController {
         return new ResponseEntity<GenericResponse<Object>>(convocatoriaService.HabilitarConvocatoria(idconvocatoria), HttpStatus.OK);
     }
 
+    
+    
+    ///Tes de id
+    @ApiOperation("Busca la convocatoria por ID")
+    @CrossOrigin({"*"})
+    @GetMapping("/buscarConvocatoria/{idconvocatoria}")
+    public ResponseEntity<Convocatoria> getById(@PathVariable("idconvocatoria") Long idconvocatoria) {
+        if (!convocatoriaService.existsById(idconvocatoria)) {
+            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        }
+        Convocatoria convo = convocatoriaService.getOne(idconvocatoria).get();
+        return new ResponseEntity(convo, HttpStatus.OK);
+    }
 }
