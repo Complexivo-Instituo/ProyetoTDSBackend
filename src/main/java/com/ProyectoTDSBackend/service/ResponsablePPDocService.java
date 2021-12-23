@@ -32,7 +32,7 @@ public class ResponsablePPDocService {
 			Long idresponsableppp) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
-	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())== null){
+	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())!= null){
 	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setResponsableppp(responsableRepository.findByidresponsableppp(idresponsableppp));
