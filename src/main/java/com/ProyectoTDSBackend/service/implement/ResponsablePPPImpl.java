@@ -27,8 +27,10 @@ public class ResponsablePPPImpl implements ResponsablePPService{
 	@Override
 	public GenericResponse<Object> createResponsablePPP(ResponsablePPP responsable, Long idcarrera, int idpersona) {
 		GenericResponse<Object> response = new GenericResponse<>();
+		List<ResponsablePPP> responsables = getAllResponsablesPPP();
+		
 		try {
-//			if (responsableRepository.findById(responsable.getIdresponsableppp()).isEmpty() == true) {
+			if (responsables.contains(responsable) == false) {
 				if (carreraRepository.findById(idcarrera).isEmpty() == false) {
 					if (personaRepository.findById(idpersona).isEmpty() == false) {
 //						if (personaRepository.findByIdentificacion(responsable.getPersona().getIdentificacion()) != null) {
@@ -46,20 +48,20 @@ public class ResponsablePPPImpl implements ResponsablePPService{
 //	                         response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 //	                    }
 					} else {
+						response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+						response.setObject("No se puede asignar  persona");
+						response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+					}
+				} else {
 					response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-					response.setObject("No se puede asignar  persona");
+					response.setObject("No se puede asignar carrera");
 					response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 				}
-			} else {
+			}else {
 				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-				response.setObject("No se puede asignar carrera");
+				response.setObject("El Responsable ya existe");
 				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 			}
-//				}else {
-//				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-//				response.setObject("El Responsable ya existe");
-//				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-//			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 			response.setObject("Error: " + e);
@@ -78,6 +80,66 @@ public class ResponsablePPPImpl implements ResponsablePPService{
 	public ResponsablePPP getById(Long idresponsableppp) {
 		// TODO Auto-generated method stub
 		return responsableRepository.findByidresponsableppp(idresponsableppp);
+	}
+
+	@Override
+	public GenericResponse<Object> updateResponsablePPP(ResponsablePPP responsable, Long idcarrera, int idpersona) {
+		// TODO Auto-generated method stub
+		GenericResponse<Object> response = new GenericResponse<>();
+		List<ResponsablePPP> responsables = getAllResponsablesPPP();
+		ResponsablePPP responsablePPP = responsableRepository.findByidresponsableppp(responsable.getIdresponsableppp());
+		
+		try {
+			if (responsables.contains(responsable) == false) {
+				if (carreraRepository.findById(idcarrera).isEmpty() == false) {
+					if (personaRepository.findById(idpersona).isEmpty() == false) {
+//						if (personaRepository.findByIdentificacion(responsable.getPersona().getIdentificacion()) != null) {
+	                       
+							responsablePPP.setPersona(personaRepository.findById(idpersona).get());
+							responsablePPP.setCarrera(carreraRepository.findByidcarrera(idcarrera));
+	                        responsableRepository.save(responsablePPP);
+	                        response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+	                        response.setObject("Responsable de PPP actualizado");
+	                        response.setStatus(ParametersApp.SUCCESSFUL.value());
+	                        //return new ResponseEntity<>("Usuario creado", HttpStatus.CREATED);
+//	                    } else {
+//	                    	 response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//	                         response.setObject("No se puede asignar un coordinador a esta persona");
+//	                         response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//	                    }
+					} else {
+						response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+						response.setObject("No se puede asignar  persona");
+						response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+					}
+				} else {
+					response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+					response.setObject("No se puede asignar carrera");
+					response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+				}
+			}else {
+				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+				response.setObject("El Responsable ya existe");
+				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+			}
+		} catch (Exception e) {
+			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+			response.setObject("Error: " + e);
+			response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+		}
+		return response;
+	}
+
+	@Override
+	public void deleteResponsablePPP(Long idresponsableppp) {
+		// TODO Auto-generated method stub
+		
+		try {
+			responsableRepository.deleteById(idresponsableppp);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
 

@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,27 +31,40 @@ public class ResponsablePPPController {
 	
 	
 	 /**
-     * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
-     */
-	 @CrossOrigin({"*"})
-	    @PostMapping("/add-ResponsablePPP")
-	    ResponseEntity<GenericResponse<Object>> saveResponsablePPp(@RequestBody ResponsablePPP responsable, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
-	        return new ResponseEntity<GenericResponse<Object>>(responsableService.createResponsablePPP(responsable, idcarrera, idpersona), HttpStatus.OK);
-	    }
+	 * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
+	 */
+	@CrossOrigin({"*"})
+    @PostMapping("/add-ResponsablePPP")
+    ResponseEntity<GenericResponse<Object>> saveResponsablePPp(@RequestBody ResponsablePPP responsable, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
+        return new ResponseEntity<GenericResponse<Object>>(responsableService.createResponsablePPP(responsable, idcarrera, idpersona), HttpStatus.OK);
+    }
 
 	 
-	 @CrossOrigin({"*"})
-	    @GetMapping("/findAll-ResponsablePPP")
-	    public List<ResponsablePPP> getAllResponsables() {
-	        return responsableService.getAllResponsablesPPP();
-	    }
+	@CrossOrigin({"*"})
+    @GetMapping("/findAll-ResponsablePPP")
+    public List<ResponsablePPP> getAllResponsables() {
+        return responsableService.getAllResponsablesPPP();
+    }
 	   
 	
-	 @CrossOrigin({"*"})
-	    @GetMapping("/getById-Responsable")
-	    public ResponsablePPP getByIdResponsable(@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
-	        return responsableService.getById(idresponsableppp);
-	    }
+	@CrossOrigin({"*"})
+    @GetMapping("/getById-Responsable")
+    public ResponsablePPP getByIdResponsable(@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
+        return responsableService.getById(idresponsableppp);
+    }
+	
+	
+	@CrossOrigin({"*"})
+    @PutMapping("/put-ResponsablePPP")
+    ResponseEntity<GenericResponse<Object>> putResponsablePPp(@RequestBody ResponsablePPP responsable, @RequestParam(value = "idcarrera") Long idcarrera, @RequestParam(value = "idpersona") int idpersona) {
+        return new ResponseEntity<GenericResponse<Object>>(responsableService.updateResponsablePPP(responsable, idcarrera, idpersona), HttpStatus.OK);
+    }
+	
+	@CrossOrigin({"*"})
+    @DeleteMapping("/deleteById-Responsable")
+    public void deleteByIdResponsable(@RequestParam(value = "idresponsableppp") Long idresponsableppp) {
+        responsableService.deleteResponsablePPP(idresponsableppp);
+    }
 	
 
 
