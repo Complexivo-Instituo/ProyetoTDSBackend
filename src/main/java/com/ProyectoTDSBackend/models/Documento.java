@@ -23,18 +23,20 @@ public class Documento implements Serializable {
 	private Long iddocumento;
 	@Column(name = "nombreanexo", nullable = false)
 	private String nombreanexo;
-	@Column(name = "tipo_documento", nullable = false)
-	private String tipo_documento;
-	@Column(name = "enlace_documento", nullable = false)
-	private String enlace_documento;
+	@Column(name = "tipodocumento", nullable = false)
+	private String tipodocumento;
+	@Column(name = "enlacedocumento", nullable = false)
+	private String enlacedocumento;
 
 	public Documento() {
 	}
 
-	public Documento(String nombreanexo, String tipo_documento, String enlace_documento) {
+	public Documento(Long iddocumento, String nombreanexo, String tipodocumento, String enlacedocumento) {
+		super();
+		this.iddocumento = iddocumento;
 		this.nombreanexo = nombreanexo;
-		this.tipo_documento = tipo_documento;
-		this.enlace_documento = enlace_documento;
+		this.tipodocumento = tipodocumento;
+		this.enlacedocumento = enlacedocumento;
 	}
 
 	public Long getIddocumento() {
@@ -53,21 +55,26 @@ public class Documento implements Serializable {
 		this.nombreanexo = nombreanexo;
 	}
 
-	public String getTipo_documento() {
-		return tipo_documento;
+	public String getTipodocumento() {
+		return tipodocumento;
 	}
 
-	public void setTipo_documento(String tipo_documento) {
-		this.tipo_documento = tipo_documento;
+	public void setTipodocumento(String tipodocumento) {
+		this.tipodocumento = tipodocumento;
 	}
 
-	public String getEnlace_documento() {
-		return enlace_documento;
+	public String getEnlacedocumento() {
+		return enlacedocumento;
 	}
 
-	public void setEnlace_documento(String enlace_documento) {
-		this.enlace_documento = enlace_documento;
+	public void setEnlacedocumento(String enlacedocumento) {
+		this.enlacedocumento = enlacedocumento;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 
 }

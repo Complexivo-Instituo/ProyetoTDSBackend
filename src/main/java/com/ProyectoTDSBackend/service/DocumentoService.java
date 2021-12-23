@@ -42,19 +42,19 @@ public class DocumentoService {
 	    public GenericResponse<Object> createDocumento(Documento documento) {
 	        GenericResponse<Object> response = new GenericResponse<>();
 	        try {
-//	            if (documentoRepository.findBynombreanexo(documento.getNombreanexo().isEmpty() ==false){
+	            if (documentoRepository.findBynombreanexo(documento.getNombreanexo().toUpperCase()) != null){
 	                documento.setNombreanexo(documento.getNombreanexo().toUpperCase());
-	                documento.setTipo_documento(documento.getTipo_documento().toUpperCase());
-	                documento.setEnlace_documento(documento.getEnlace_documento());
+	                documento.setTipodocumento(documento.getTipodocumento().toUpperCase());
+	                documento.setEnlacedocumento(documento.getEnlacedocumento());
 	                documentoRepository.save(documento);
 	                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 	                response.setObject("Documento :"+documento.getIddocumento()+" creado exitosamente como Documento");
 	                response.setStatus(ParametersApp.SUCCESSFUL.value());
-//	            } else {
-//	                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-//	                response.setObject("Nombre de Documento en Documento duplicado");
-//	                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-//	            }
+	            } else {
+	                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+	                response.setObject("Nombre de Documento en Documento duplicado");
+	                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+	            }
 	        }catch (Exception e){
 	            response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 	            response.setObject("Error: "+e);
@@ -63,13 +63,13 @@ public class DocumentoService {
 	        return response;
 	    }
 	    
-	    public GenericResponse<Object> putDocumento(Long iddocumento, String nombreanexo,String tipo_documento,String enlace_documento) {
+	    public GenericResponse<Object> putDocumento(Long iddocumento, String nombreanexo,String tipodocumento,String enlacedocumento) {
 	        GenericResponse<Object> response = new GenericResponse<>();
 	        Documento documento = documentoRepository.findByiddocumento(iddocumento);
 	        if (documento.getIddocumento() != null ) {
 	            documento.setNombreanexo(nombreanexo.toUpperCase());
-	            documento.setTipo_documento(tipo_documento.toUpperCase());
-	            documento.setEnlace_documento(enlace_documento);
+	            documento.setTipodocumento(tipodocumento.toUpperCase());
+	            documento.setEnlacedocumento(enlacedocumento);
 	            documentoRepository.save(documento);
 	            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 	            response.setObject("Actualizado correctamente");
