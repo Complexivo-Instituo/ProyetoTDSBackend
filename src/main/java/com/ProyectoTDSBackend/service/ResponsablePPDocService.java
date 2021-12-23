@@ -32,7 +32,7 @@ public class ResponsablePPDocService {
 			Long idresponsableppp) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
-	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())!= null){
+//	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())!= null){
 	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setResponsableppp(responsableRepository.findByidresponsableppp(idresponsableppp));
@@ -46,11 +46,11 @@ public class ResponsablePPDocService {
 		                response.setObject("No se ha podido asignar este documento está duplicado");
 		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 		            }
-	            	}else {
-	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-		                response.setObject("Error al procesar informacion");
-		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-	            	}
+//	            	}else {
+//	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//		                response.setObject("Error al procesar informacion");
+//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//	            	}
 	        }catch (Exception e){
 	            response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 	            response.setObject("Error: "+e);
