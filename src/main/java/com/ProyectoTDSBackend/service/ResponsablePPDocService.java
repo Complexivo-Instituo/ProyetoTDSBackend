@@ -33,7 +33,7 @@ public class ResponsablePPDocService {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
 //	            if (responsableDocRepository.findByidresponsabledoc(tutordoc.getIdresponsabledoc())!= null){
-	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
+	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento()).isEmpty()== false) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setResponsableppp(responsableRepository.findByidresponsableppp(idresponsableppp));
 	                    tutordoc.setFechaasignacion(tutordoc.getFechaasignacion());
