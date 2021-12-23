@@ -36,7 +36,7 @@ public class ResponsablePPDocService {
 	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setResponsableppp(responsableRepository.findByidresponsableppp(idresponsableppp));
-	                    
+	                    tutordoc.setFechaasignacion(tutordoc.getFechaasignacion());
 		                responsableDocRepository.save(tutordoc);
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 		                response.setObject("Se ha asignado documento ha:"+tutordoc.getResponsableppp().getPersona().getPrimernombre()+" creado exitosamente");
