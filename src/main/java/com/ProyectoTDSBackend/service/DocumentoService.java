@@ -42,7 +42,7 @@ public class DocumentoService {
 	    public GenericResponse<Object> createDocumento(Documento documento) {
 	        GenericResponse<Object> response = new GenericResponse<>();
 	        try {
-	            if (documentoRepository.findBynombreanexo(documento.getNombreanexo().toUpperCase()) != null){
+	
 	                documento.setNombreanexo(documento.getNombreanexo().toUpperCase());
 	                documento.setTipo_documento(documento.getTipo_documento().toUpperCase());
 	                documento.setEnlace_documento(documento.getEnlace_documento());
@@ -50,11 +50,6 @@ public class DocumentoService {
 	                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 	                response.setObject("Documento :"+documento.getIddocumento()+" creado exitosamente como Documento");
 	                response.setStatus(ParametersApp.SUCCESSFUL.value());
-	            } else {
-	                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-	                response.setObject("Nombre de Documento en Documento duplicado");
-	                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-	            }
 	        }catch (Exception e){
 	            response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 	            response.setObject("Error: "+e);

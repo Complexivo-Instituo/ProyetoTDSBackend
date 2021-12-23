@@ -34,8 +34,8 @@ public class TutorAcadDocImpl implements TutorAcadDocService{
 			Long idtutoracad) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
-	            if (tutoracaddocRepository.findById(tutordoc.getIdtutordoc()) != null){
-	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
+//	            if (tutoracaddocRepository.findById(tutordoc.getIdtutordoc()) != null){
+//	            	if(documentoRepository.findById(tutordoc.getDocumento().getIddocumento())!=null) {
 	            		 tutordoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     tutordoc.setTutoracad(tutorRepository.findByidtutoracad(idtutoracad));
 	                    
@@ -43,16 +43,16 @@ public class TutorAcadDocImpl implements TutorAcadDocService{
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 		                response.setObject("Se ha asignado documento ha:"+tutordoc.getTutoracad().getPersona().getPrimernombre()+" creado exitosamente");
 		                response.setStatus(ParametersApp.SUCCESSFUL.value());
-		            } else {
-		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-		                response.setObject("No se ha podido asignar este documento está duplicado");
-		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-		            }
-	            	}else {
-	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-		                response.setObject("Ya se ha asignado el documento a este estudiante");
-		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-	            	}
+//		            } else {
+//		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//		                response.setObject("No se ha podido asignar este documento está duplicado");
+//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//		            }
+//	            	}else {
+//	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//		                response.setObject("Ya se ha asignado el documento a este estudiante");
+//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//	            	}
 	        }catch (Exception e){
 	            response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 	            response.setObject("Error: "+e);
