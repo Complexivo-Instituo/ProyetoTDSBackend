@@ -29,7 +29,7 @@ public class AsistenciaController {
 	/**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
-	@ApiOperation("Permite añadir una asignatura a un estudiante")
+	@ApiOperation("Permite añadir una asistencia a un estudiante")
 	@CrossOrigin({"*"})
     @PostMapping("/add-asistencias-Asistencia")
 	ResponseEntity<GenericResponse<Object>> saveAsistencia(@RequestBody Asistencia asistencia,

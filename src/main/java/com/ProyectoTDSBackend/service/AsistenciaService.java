@@ -25,31 +25,30 @@ public class AsistenciaService {
 	AsistenciaRepository asistenciaRepository;
 	
 	@Autowired
-	EstudianteRepository estudianteRepository;
+	EstudianteService estudianteService;
 	
 	@Autowired
-	CarreraRepository carreraRepository;
+	CarreraService carreraService;
 	
 	@Autowired
-	TutorEmpresarialRepository empresarialRepository;
+	TutorEmpresarialService tutorEmpresarialService;
 	
 	
 	public List<Asistencia> getListarAsistenciaByIdestudiante(Long idestudiante) {
-		return asistenciaRepository.findByestudiante(idestudiante);
+		Estudiante estudiante = estudianteService.getById(idestudiante);
+		return asistenciaRepository.findByestudiante(estudiante);
 	}
 	
 	public  GenericResponse<Object> saveAsistencia(Asistencia asistencia, Long idestudiante, Long idcarrera, Long idtutoremp) {
 		GenericResponse<Object> response = new GenericResponse<>();
-		List<Estudiante> estudiantes = estudianteRepository.findAll();
-		List<Carrera> carreras = carreraRepository.findAll();
-		List<TutorEmpresarial> empresariales = empresarialRepository.findAll();
-		
-		if (estudiantes.contains(idestudiante) != false) {
-			if(carreras.contains(idcarrera) != false) {
-				if (empresariales.contains(idtutoremp) != false) {
-		    		asistencia.setEstudiante(estudianteRepository.findById(idestudiante).get());
-		    		asistencia.setCarrera(carreraRepository.findById(idcarrera).get());
-		    		asistencia.setTutorEmpresarial(empresarialRepository.findById(idtutoremp).get());
+		List<Estudiante> estudiantes = estudianteService.getAllEstudiantes();
+		List<TutorEmpresarial> empresariales = tutorEmpresarialService.getAllTutores();
+		if (estudiantes.contains(estudianteService.getById(idestudiante)) != false) {
+			if(carreraService.getbyId(idcarrera).getMessage() == "Exito") {
+				if (empresariales.contains(tutorEmpresarialService.getById(idtutoremp)) != false) {
+		    		asistencia.setEstudiante(estudianteService.getById(idestudiante));
+		    		asistencia.setCarrera(carreraService.getbynombre(asistencia.getCarrera().getNombre()));
+		    		asistencia.setTutorEmpresarial(tutorEmpresarialService.getById(idtutoremp));
 		    		asistenciaRepository.save(asistencia);
 					response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 					response.setObject("La asistencia se ha guardado con éxito");
