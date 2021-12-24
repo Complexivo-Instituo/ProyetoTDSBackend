@@ -6,12 +6,15 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.models.Actividad;
+import com.ProyectoTDSBackend.models.Asignatura;
 import com.ProyectoTDSBackend.service.ActividadService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -64,4 +67,10 @@ public class ActividadController {
                 actividadService.putActividad(idactividad,descripcionactividades ,horario, cronograma),
                 HttpStatus.OK);
     }
+    
+	 @CrossOrigin({"*"})
+	    @GetMapping("/getById-actividad")
+	    public Optional<Actividad> getByIdActividad(@RequestParam(value = "idactividad") Long idactividad) {
+	        return actividadService.getOne(idactividad);
+	    }
 }
