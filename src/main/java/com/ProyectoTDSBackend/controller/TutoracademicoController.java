@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ProyectoTDSBackend.models.ResponsablePPP;
 import com.ProyectoTDSBackend.models.TutorAcademico;
 import com.ProyectoTDSBackend.service.TutorAcadService;
+import com.ProyectoTDSBackend.service.implement.TutorAcadImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 @RestController
@@ -24,7 +25,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 public class TutoracademicoController {
 	
 	@Autowired
-	TutorAcadService tutoracadService;
+	TutorAcadImpl tutoracadService;
 	
 	
 	 /**
