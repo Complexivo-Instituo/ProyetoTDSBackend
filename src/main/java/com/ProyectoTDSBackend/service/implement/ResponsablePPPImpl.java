@@ -135,7 +135,9 @@ public class ResponsablePPPImpl implements ResponsablePPService{
 		// TODO Auto-generated method stub
 		
 		try {
-			responsableRepository.deleteById(idresponsableppp);
+			ResponsablePPP responsablePPP = responsableRepository.findByidresponsableppp(idresponsableppp);
+			
+//			responsableRepository.deleteById(idresponsableppp);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
