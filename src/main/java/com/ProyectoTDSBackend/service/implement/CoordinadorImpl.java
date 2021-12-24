@@ -35,10 +35,10 @@ public class CoordinadorImpl implements CoordinadorService {
 	public GenericResponse<Object> createCoordinador(Coordinador coordinador, Long idcarrera, int idpersona) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		try {
-			if (coordinadorRepository.findById(coordinador.getIdcoordinador()) != null) {
+//			if (coordinadorRepository.findById(coordinador.getIdcoordinador()) != null) {
 				if (carreraRepository.findById(idcarrera).isEmpty() == false) {
 					if (personaRepository.findById(idpersona).isEmpty() == false) {
-						if (personaRepository.findByIdentificacion(coordinador.getPersona().getIdentificacion()) != null) {
+//						if (personaRepository.findByIdentificacion(coordinador.getPersona().getIdentificacion()) != null) {
 	                       
 	                        coordinador.setEstado(1);
 	                        coordinador.setPersona(personaRepository.findById(idpersona).get());
@@ -48,11 +48,11 @@ public class CoordinadorImpl implements CoordinadorService {
 	                        response.setObject("coordinador creado");
 	                        response.setStatus(ParametersApp.SUCCESSFUL.value());
 	                        //return new ResponseEntity<>("Usuario creado", HttpStatus.CREATED);
-	                    } else {
-	                    	 response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-	                         response.setObject("No se puede asignar un coordinador a esta persona");
-	                         response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-	                    }
+//	                    } else {
+//	                    	 response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//	                         response.setObject("No se puede asignar un coordinador a esta persona");
+//	                         response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//	                    }
 					} else {
 					response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 					response.setObject("No se puede asignar  persona");
@@ -62,11 +62,12 @@ public class CoordinadorImpl implements CoordinadorService {
 				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 				response.setObject("No se puede asignar carrera");
 				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-			}}else {
-				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-				response.setObject("El coordinador ya existe");
-				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 			}
+//				}else {
+//				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//				response.setObject("El coordinador ya existe");
+//				response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 			response.setObject("Error: " + e);

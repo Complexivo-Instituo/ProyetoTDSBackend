@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.Coordinador;
 import com.ProyectoTDSBackend.service.CoordinadorService;
+import com.ProyectoTDSBackend.service.implement.CoordinadorImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 @RestController
@@ -23,7 +24,7 @@ import com.ProyectoTDSBackend.util.GenericResponse;
 public class CoordinadorController {
 	
 	@Autowired
-	CoordinadorService coordinadorService;
+	CoordinadorImpl coordinadorService;
 	 /**
      * CONSTRUCCION DEL METODO POST PARA SOLICITAR LA CREACION DE UN NUEVO REGISTRO
      */
