@@ -51,11 +51,11 @@ public class DocumentoController {
 	 @CrossOrigin({"*"})
 	@PostMapping("/put-documento")
 	ResponseEntity<GenericResponse<Object>> putDocumento(@RequestParam(value = "iddocumento") Long iddocumento,
-			@RequestParam(value = "nombreanexo") String nombre_anexo,
-			@RequestParam(value = "tipo_documento") String tipo_documento,
-			@RequestParam(value = "enlace_documento") String enlace_documento) {
+			@RequestParam(value = "nombreanexo") String nombreanexo,
+			@RequestParam(value = "tipodocumento") String tipodocumento,
+			@RequestParam(value = "enlacedocumento") String enlacedocumento) {
 		return new ResponseEntity<GenericResponse<Object>>(
-				documentoService.putDocumento(iddocumento, nombre_anexo, tipo_documento, enlace_documento),
+				documentoService.putDocumento(iddocumento, nombreanexo, tipodocumento, enlacedocumento),
 				HttpStatus.OK);
 	}
 
