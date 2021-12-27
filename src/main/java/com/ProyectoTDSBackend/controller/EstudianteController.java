@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ProyectoTDSBackend.models.Estudiante;
 import com.ProyectoTDSBackend.service.EstudianteService;
+import com.ProyectoTDSBackend.service.implement.EstudianteImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 public class EstudianteController {
 	
 	@Autowired
-	EstudianteService estudianteService;
+	EstudianteImpl estudianteService;
 	
 	
 	 /**
