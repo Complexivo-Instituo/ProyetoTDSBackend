@@ -39,7 +39,7 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
 //	            if (estdocumentoRepository.findById(estudiantedoc.getIdestudiantedoc()) != null){
-	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento())!=null) {
+//	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento())!=null) {
 	            		 estudiantedoc.setDocumento(documentoRepository.findById(iddocumento).get());
 	                     estudiantedoc.setEstudiante(estudianteRepository.findById(idestudiante).get());
 	                    estudiantedoc.setFechaasignacion(estudiantedoc.getFechaasignacion());
@@ -47,11 +47,11 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 		                response.setObject("Se ha asignado documento ha:"+estudiantedoc.getEstudiante().getPersona().getPrimernombre()+" creado exitosamente");
 		                response.setStatus(ParametersApp.SUCCESSFUL.value());
-		            } else {
-		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-		                response.setObject("Documento  duplicado");
-		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-		            }
+//		            } else {
+//		                response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//		                response.setObject("Documento  duplicado");
+//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//		            }
 //	            	}else {
 //	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 //		                response.setObject("Ya se ha asignado el documento a este estudiante");
