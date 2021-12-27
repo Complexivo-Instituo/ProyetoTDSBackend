@@ -42,7 +42,7 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento())!=null) {
 	            		 estudiantedoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     estudiantedoc.setEstudiante(estudianteRepository.findByidestudiante(idestudiante));
-	                    
+	                    estudiantedoc.setFechaasignacion(estudiantedoc.getFechaasignacion());
 		                estdocumentoRepository.save(estudiantedoc);
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 		                response.setObject("Se ha asignado documento ha:"+estudiantedoc.getEstudiante().getPersona().getPrimernombre()+" creado exitosamente");
