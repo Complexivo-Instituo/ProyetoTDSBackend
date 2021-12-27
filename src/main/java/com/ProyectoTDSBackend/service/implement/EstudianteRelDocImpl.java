@@ -39,7 +39,7 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
 //	            if (estdocumentoRepository.findById(estudiantedoc.getIdestudiantedoc()) != null){
-	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento()).isEmpty()==false) {
+	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento()).isEmpty()==true) {
 	            		 estudiantedoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     estudiantedoc.setEstudiante(estudianteRepository.findByidestudiante(idestudiante));
 	                    estudiantedoc.setFechaasignacion(estudiantedoc.getFechaasignacion());
