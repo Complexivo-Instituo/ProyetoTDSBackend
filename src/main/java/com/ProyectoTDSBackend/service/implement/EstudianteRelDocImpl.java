@@ -40,8 +40,8 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 		  try {
 //	            if (estdocumentoRepository.findById(estudiantedoc.getIdestudiantedoc()) != null){
 	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento())!=null) {
-	            		 estudiantedoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
-	                     estudiantedoc.setEstudiante(estudianteRepository.findByidestudiante(idestudiante));
+	            		 estudiantedoc.setDocumento(documentoRepository.findById(iddocumento).get());
+	                     estudiantedoc.setEstudiante(estudianteRepository.findById(idestudiante).get());
 	                    estudiantedoc.setFechaasignacion(estudiantedoc.getFechaasignacion());
 		                estdocumentoRepository.save(estudiantedoc);
 		                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
