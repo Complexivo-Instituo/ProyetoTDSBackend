@@ -38,7 +38,7 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 			Long iddocumento, Long idestudiante) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
-//	            if (estdocumentoRepository.findById(estudiantedoc.getIdestudiantedoc()) != null){
+	            if (estudianteRepository.findById(estudiantedoc.getIdestudiantedoc()).isEmpty() == true ){
 	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento()).isEmpty()==true) {
 	            		 estudiantedoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     estudiantedoc.setEstudiante(estudianteRepository.findByidestudiante(idestudiante));
@@ -52,11 +52,11 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 		                response.setObject("Documento  duplicado");
 		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
 		            }
-//	            	}else {
-//	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-//		                response.setObject("Ya se ha asignado el documento a este estudiante");
-//		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-//	            	}
+	            	}else {
+	            		response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+		                response.setObject("Ya se ha asignado el documento a este estudiante");
+		                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+	            	}
 	        }catch (Exception e){
 	            response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 	            response.setObject("Error: "+e);
