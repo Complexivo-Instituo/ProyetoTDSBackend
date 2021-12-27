@@ -28,7 +28,7 @@ public class EstudianteImpl implements EstudianteService {
 	public GenericResponse<Object> createEstudiante(Estudiante estudiante, int idpersona) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		try {
-			if (estudianteRepository.findById(estudiante.getIdestudiante()) != null) {
+//			if (estudianteRepository.findById(estudiante.getIdestudiante()) != null) {
 				if (personaRepository.findById(idpersona).isEmpty() == false) {
 					Persona persona = personaRepository
 							.findByIdentificacion(estudiante.getPersona().getIdentificacion());
@@ -49,11 +49,11 @@ public class EstudianteImpl implements EstudianteService {
 					response.setObject("Estudiante creado");
 					response.setStatus(ParametersApp.SUCCESSFUL.value());
 				}
-			} else {
-				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
-                response.setObject("El estudiante ya existe");
-                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
-			}
+//			} else {
+//				response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
+//                response.setObject("El estudiante ya existe");
+//                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+//			}
 		} catch (Exception e) {
 			response.setMessage(ParametersApp.PROCESS_NOT_COMPLETED.getReasonPhrase());
 			response.setObject("Error: " + e);
