@@ -17,6 +17,7 @@ import com.ProyectoTDSBackend.models.Estudiante;
 import com.ProyectoTDSBackend.models.EstudianteRelDoc;
 import com.ProyectoTDSBackend.service.EstudianteRelDocService;
 import com.ProyectoTDSBackend.service.EstudianteService;
+import com.ProyectoTDSBackend.service.implement.EstudianteRelDocImpl;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +28,7 @@ import io.swagger.annotations.ApiOperation;
 public class EstudianteDocumentoController {
 	
 	@Autowired
-	EstudianteRelDocService estdocService;
+	EstudianteRelDocImpl estdocService;
 	
 	
 	 /**
