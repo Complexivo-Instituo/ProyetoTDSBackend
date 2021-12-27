@@ -38,7 +38,7 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 			Long iddocumento, Long idestudiante) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
-	            if (estudianteRepository.findById(estudiantedoc.getIdestudiantedoc()).isEmpty() == true ){
+	            if (estudianteRepository.findById(estudiantedoc.getEstudiante().getIdestudiante()).isEmpty() == true ){
 	            	if(documentoRepository.findById(estudiantedoc.getDocumento().getIddocumento()).isEmpty()==true) {
 	            		 estudiantedoc.setDocumento(documentoRepository.findByiddocumento(iddocumento));
 	                     estudiantedoc.setEstudiante(estudianteRepository.findByidestudiante(idestudiante));
