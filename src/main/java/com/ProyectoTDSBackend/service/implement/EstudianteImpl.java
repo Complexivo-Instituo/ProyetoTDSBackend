@@ -30,15 +30,16 @@ public class EstudianteImpl implements EstudianteService {
 		try {
 //			if (estudianteRepository.findById(estudiante.getIdestudiante()) != null) {
 				if (personaRepository.findById(idpersona).isEmpty() == false) {
-					Persona persona = personaRepository
-							.findByIdentificacion(estudiante.getPersona().getIdentificacion());
-					persona.setPrimernombre(estudiante.getPersona().getPrimernombre().toUpperCase());
-					persona.setSegundonombre(estudiante.getPersona().getSegundonombre().toUpperCase());
-					persona.setPrimerapellido(estudiante.getPersona().getPrimerapellido().toUpperCase());
-					persona.setSegundoapellido(estudiante.getPersona().getSegundoapellido().toUpperCase());
-					persona.setContacto(estudiante.getPersona().getContacto());
-					persona.setEmail(estudiante.getPersona().getEmail());
-					estudiante.setPersona(persona);
+					estudiante.setPersona(personaRepository.findById(idpersona).get());
+//					Persona persona = personaRepository
+//							.findByIdentificacion(estudiante.getPersona().getIdentificacion());
+//					persona.setPrimernombre(estudiante.getPersona().getPrimernombre().toUpperCase());
+//					persona.setSegundonombre(estudiante.getPersona().getSegundonombre().toUpperCase());
+//					persona.setPrimerapellido(estudiante.getPersona().getPrimerapellido().toUpperCase());
+//					persona.setSegundoapellido(estudiante.getPersona().getSegundoapellido().toUpperCase());
+//					persona.setContacto(estudiante.getPersona().getContacto());
+//					persona.setEmail(estudiante.getPersona().getEmail());
+//					estudiante.setPersona(persona);
 					estudianteRepository.save(estudiante);
 					response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 					response.setObject("Estudiante creado");
