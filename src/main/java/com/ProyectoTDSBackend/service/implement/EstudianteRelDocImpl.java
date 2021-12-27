@@ -34,8 +34,8 @@ public class EstudianteRelDocImpl implements EstudianteRelDocService{
 	EstudianteRelDocService estdocumentoService;
 	
 	@Override
-	public GenericResponse<Object> aginarDocumentoAEstudiante(EstudianteRelDoc estudiantedoc, Long idestudiante,
-			Long iddocumento) {
+	public GenericResponse<Object> aginarDocumentoAEstudiante(EstudianteRelDoc estudiantedoc,
+			Long iddocumento, Long idestudiante) {
 		GenericResponse<Object> response = new GenericResponse<>();
 		  try {
 //	            if (estdocumentoRepository.findById(estudiantedoc.getIdestudiantedoc()) != null){
