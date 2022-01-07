@@ -68,10 +68,6 @@ Usamos [Git](github.com) para el versionado. Para todas las versiones disponible
 * **SAQUIPAY LOJA CRISTIAN RAFAEL** - *Desarrollador* - cristian.saquipay.est@tecazuay.edu.ec
 
 
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
 ## Expresiones de Gratitud 🎁
 
 * Agradecemos a los integrantes de este equipo de trabajo ☕ que hizo posible desarrollar este proyecto 📢
