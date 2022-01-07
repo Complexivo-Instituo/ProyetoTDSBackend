@@ -11,9 +11,9 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_- Java_
-_- Spring Tools Framework o Eclipse_
-_- Java SDK_
+*_- Java_
+*_- Spring Tools Framework o Eclipse_
+*_- Java SDK_
 
 
 
