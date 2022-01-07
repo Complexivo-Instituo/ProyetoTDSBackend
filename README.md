@@ -11,53 +11,30 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Necesitas hacer instalar las dependencias para PrimeNG e instalar las dependencias de node haciendo un npm install_
+_- Java_
+_- Spring Tools Framework o Eclipse_
+_- Java SDK_
 
-```
-Da un ejemplo
-```
+
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_En el Project Explorer, haga clic derecho en el nombre del proyecto -> seleccione "Ejecutar como" -> "Maven Build_
 
-_Dí cómo será ese paso_
+_En los objetivos, ingrese spring-boot: run_
 
-```
-Da un ejemplo
-```
-
-_Y repite_
+_luego haga clic en el botón Ejecutar._
 
 ```
-hasta finalizar
+Una vez se tenga el complemento se podra ver levantado el entorno de backend
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Nota: si estas usando eclipse en algunas ocasiones saldra la opcion de Aplicación Spring Boot_
 
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Heroku es una plataforma en la nube como un servicio (PaaS) que sirve para implementar, administrar y escalar aplicaciones. Es compatible con varios lenguajes de programación y tiene un modelo de implementación muy simple y conveniente._
 
 ## Construido con 🛠️
 
@@ -68,14 +45,14 @@ _Agrega notas adicionales sobre como hacer deploy_
 | Cloud Firestore |  |  | netlify |  | 
 
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+* [Swagger](https://proyetotdsbackend.herokuapp.com/swagger-ui/index.html#/auth-controller/loginUsingPOST) - El framework usado para documentar APIs Rest
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Spring](https://rometools.github.io/rome/) - Usado para desarrollar la aplicacion 
 
 
 ## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
+Usamos [Git](github.com) para el versionado. Para todas las versiones disponibles, mira las [versiones](https://github.com/Complexivo-Instituo/ProyetoTDSBackend).
 
 ## Autores ✒️
 
